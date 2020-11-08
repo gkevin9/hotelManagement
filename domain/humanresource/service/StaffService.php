@@ -14,7 +14,7 @@ class StaffService {
         $dao = new StaffDao();
     }
 
-    public function cekStaffData(StaffLoginModel $staffLogin)
+    public function validateCredential(StaffLoginModel $staffLogin)
     {
         $staff = new Staff;
         $staff->setEmail($staffLogin->email);
