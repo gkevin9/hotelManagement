@@ -1,22 +1,30 @@
 <?php
 namespace domain\humanresource\service;
 
-use domain\humanresource\entity\Staff; 
-use domain\humanresource\dao\StaffDao; 
-use domain\humanresource\model\StaffLoginModel;
+include "../model/StaffLoginModel.php";
+include '../dao/StaffDao.php';
+include '../entity/Staff.php';
+
+use domain\humanresource\entity as Entity; 
+use domain\humanresource\dao as Dao; 
+use domain\humanresource\model as Model;
 
 // Menyediakan fungsi sesuai use-case terkait customer.
 class StaffService {
+    
+    // private $dao;
 
-    private $dao;
+    // function __construct() {
+    //     $dao = new Dao\StaffDao();
+    //     echo "5.5.6";
+    // }
 
-    function __construct() {
-        $dao = new StaffDao();
-    }
-
-    public function validateCredential(StaffLoginModel $staffLogin)
+    public function validateCredential(Model\StaffLoginModel $staffLogin)
     {
-        $staff = new Staff;
+        echo "5.5.6";
+        $dao = new Dao\StaffDao();
+        echo "5.5.7";
+        $staff = new Entity\Staff();
         $staff->setEmail($staffLogin->email);
         $staff->setPassword($staffLogin->password);
 

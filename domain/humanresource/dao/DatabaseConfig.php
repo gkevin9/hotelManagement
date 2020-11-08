@@ -1,5 +1,4 @@
 <?php
-namespace domain\humanresource\dao;
 
 $servername = "localhost";
 $username = "admin";
