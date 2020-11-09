@@ -44,9 +44,9 @@
 					<?php
 					//tadinya mau lewat customer controller, trus datanya disimpen di session
 					//ternyata pas dikeluarin dari session, gabisa diambil object nya
-					include '../controller/CustomerController.php';
-					use presentation\receptionist\controller as Ctrl;
+					require_once('../controller/CustomerController.php');
 
+					use presentation\receptionist\controller as Ctrl;
 					$controller = new Ctrl\CustomerController();
 					$list = $controller->getAll();
 
