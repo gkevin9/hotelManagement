@@ -28,7 +28,7 @@
 		</nav>
 		<div class="container-fluid">
 			<br>
-			<a href="/receptionist/customer/newcustomer" class="btn btn-primary">+ New Customer</a>
+			<a href="NewCustomer.php" class="btn btn-primary">+ New Customer</a>
 			<br><br>
 			<table class="table table-hover">
 				<thead class="thead-dark">
@@ -42,19 +42,21 @@
 				</thead>
 				<tbody>
 					<?php
+					//tadinya mau lewat customer controller, trus datanya disimpen di session
+					//ternyata pas dikeluarin dari session, gabisa diambil object nya
+					include '../controller/CustomerController.php';
+					use presentation\receptionist\controller as Ctrl;
 
-					session_start();
-					$list = $_SESSION['listCustomer'];
-					print_r($list);
+					$controller = new Ctrl\CustomerController();
+					$list = $controller->getAll();
+
 					foreach ($list as $cust) {
-						// var_dump($cust);
-
 						echo "<tr>";
-						echo "<td>".$cust['id']."</td>";
-						echo "<td>".$cust['nama']."</td>";
-						echo "<td>".$cust['nomorIdentitas']."</td>";
-						echo "<td>".$cust['nomorKendaraan']."</td>";
-						echo "<td>".$cust['nomorTelepon']."</td>";
+						echo "<td>".$cust->getId()."</td>";
+						echo "<td>".$cust->getNama()."</td>";
+						echo "<td>".$cust->getNomorIdentitas()."</td>";
+						echo "<td>".$cust->getNomorKendaraan()."</td>";
+						echo "<td>".$cust->getNomorTelepon()."</td>";
 						echo "</tr>";
 					}
 					?>

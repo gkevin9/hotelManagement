@@ -6,13 +6,13 @@ $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/guest/service/CustomerService.php";
 include $tempA;
 
 use domain\guest\service as Service;
-include '../../../showErr.php';
-$controller = new CustomerController();
-$list = $controller->getAll();
-session_start();
-$_SESSION['listCustomer'] = $list;
+// include '../../../showErr.php';
+// $controller = new CustomerController();
+// $list = $controller->getAll();
+// session_start();
+// $_SESSION['listCustomer'] = $list;
 
-header("Location: ../view/ListCustomer.php");
+// header("Location: ../view/ListCustomer.php");
 
 class CustomerController {
     public function getAll() {

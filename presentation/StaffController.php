@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
         session_start();
         $_SESSION["email"] = $email;
         // $_SESSION["role"] = "admin";
-        header('Location: receptionist/controller/CustomerController.php');
+        header('Location: receptionist/view/ListCustomer.php');
     }else {
         echo "GAGAL";
     }
