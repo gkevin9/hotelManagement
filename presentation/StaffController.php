@@ -9,32 +9,28 @@ use domain\humanresource\service as Service;
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    echo "2";
+    
     $staff = new Model\StaffLoginModel();
-    $staff->setEmail = $email;
-    $staff->setPassword = $password;
-    echo "3 ";
-
+    $staff->setEmail($email);
+    $staff->setPassword($password);
+    
     $controller = new StaffController();
-    echo "3.4";
     $isValid = $controller->validateStaff($staff);
-    echo "5";
+    
     if ($isValid) {
-        echo "HALO";
+        header('Location: receptionist/view/ListReservation.php');
     }else {
-        echo "HAA";
+        echo "GAGAL";
     }
 }
 
 class StaffController {
     
     public function validateStaff(Model\StaffLoginModel $staff) {
-        echo "3.5";
-        include "../showErr.php";
+        
         $service = new Service\StaffService();
-        echo "3.6";
         $isValidate = $service->validateCredential($staff);
-        echo "4";
+        
         return $isValidate;
     }
 }

@@ -13,59 +13,59 @@ class Staff {
 	private $status;
 
 	public function setId($id) {
-		$this->$id = $id;
+		$this->id = $id;
 	}
 
 	public function getId() {
-		return $id;
+		return $this->id;
 	}
 
 	public function setEmail($email) {
-		$this->$email = $email;
+		$this->email = $email;
 	}
 
 	public function getEmail() {
-		return $email;
+		return $this->email;
 	}
 
 	public function setNama($nama) {
-		$this->$nama = $nama;
+		$this->nama = $nama;
 	}
 
 	public function getNama() {
-		return $nama;
+		return $this->nama;
 	}
 
 	public function setNomorHp($nomor_hp) {
-		$this->$nomor_hp = $nomor_hp;
+		$this->nomor_hp = $nomor_hp;
 	}
 
 	public function getNomorHp() {
-		return $nomor_hp;
+		return $this->nomor_hp;
 	}
 
 	public function setPassword($password) {
-		$this->$password = $password;
+		$this->password = $password;
 	}
 
 	public function getPassword() {
-		return $password;
+		return $this->password;
 	}
 
 	public function setPekerjaan($pekerjaan) {
-		$this->$pekerjaan = $pekerjaan;
+		$this->pekerjaan = $pekerjaan;
 	}
 
 	public function getPekerjaan() {
-		return $pekerjaan;
+		return $this->pekerjaan;
 	}
 
 	public function setStatus($status) {
-		$this->$status = $status;
+		$this->status = $status;
 	}
 
 	public function getStatus() {
-		return $status;
+		return $this->status;
 	}
 }
 ?>

@@ -8,21 +8,35 @@ use domain\humanresource\entity as Entity;
 class StaffDao {
     
     public function getStaff(Entity\Staff $staff) {
-        echo "5.5.6.1";
-        include 'DatabaseConfig.php';        
-        echo "5.5.6.2";
-        $sql = $conn->prepare("select * from staff where email = ? and password = ?");
-        $sql->bind_param("ss", $staff->email, $staff->password);
-        $result = $sql->execute();
+ 
+        $conn = mysqli_connect("localhost", "admin", "admin", "hotel");
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-        if (!$result) {
+        //taro di variable
+        $email = $staff->getEmail();
+        $password = $staff->getPassword();
+        
+        $sql = $conn->prepare("select id from staff where email = ? and password = ?");
+        $sql->bind_param("ss", $email, $password);
+        
+        // $sql->execute();
+
+        if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
         }
 
-        if ($result > 0) {//kalo email dan password bener
-            return true;
+        if (!($res = $sql->get_result())) {
+            echo "Getting result set failed: (" . $stmt->errno . ") " . $stmt->error;
+        }
+        $count = count($res->fetch_all());
+        
+        if ($count == 1) {//kalo email dan password bener
+            return True;
         }else {
-            return false;
+            return False;
         }
     }
 }
