@@ -41,15 +41,23 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#customerList}}
-					<tr>
-						<td>{{id}}</td>
-						<td>{{nama}}</td>
-						<td>{{nomorIdentitas}}</td>
-						<td>{{nomorKendaraan}}</td>
-						<td>{{nomorTelepon}}</td>
-					</tr>
-					{{/customerList}}
+					<?php
+
+					session_start();
+					$list = $_SESSION['listCustomer'];
+					print_r($list);
+					foreach ($list as $cust) {
+						// var_dump($cust);
+
+						echo "<tr>";
+						echo "<td>".$cust['id']."</td>";
+						echo "<td>".$cust['nama']."</td>";
+						echo "<td>".$cust['nomorIdentitas']."</td>";
+						echo "<td>".$cust['nomorKendaraan']."</td>";
+						echo "<td>".$cust['nomorTelepon']."</td>";
+						echo "</tr>";
+					}
+					?>
 				</tbody>
 			</table>
 		</div>	
