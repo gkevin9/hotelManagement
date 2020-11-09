@@ -18,6 +18,9 @@ if (isset($_POST['submit'])) {
     $isValid = $controller->validateStaff($staff);
     
     if ($isValid) {
+        session_start();
+        $_SESSION["email"] = $email;
+        // $_SESSION["role"] = "admin";
         header('Location: receptionist/view/ListReservation.php');
     }else {
         echo "GAGAL";

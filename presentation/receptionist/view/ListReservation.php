@@ -15,7 +15,7 @@
 		        		<a class="nav-link" href="#">Reservation <span class="sr-only">(current)</span></a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="/receptionist/customer">Customer</a>
+		        		<a class="nav-link" href="ListCustomer.php">Customer</a>
 		      		</li>
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="#">Task</a>

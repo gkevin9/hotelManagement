@@ -32,6 +32,7 @@ class StaffDao {
             echo "Getting result set failed: (" . $stmt->errno . ") " . $stmt->error;
         }
         $count = count($res->fetch_all());
+        $res->close();
         
         if ($count == 1) {//kalo email dan password bener
             return True;
