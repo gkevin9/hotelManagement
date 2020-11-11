@@ -1,6 +1,6 @@
 create table staff (
 	id varchar(10),
-	email varhcar(25),
+	email varchar(25),
 	nama varchar(20),
 	nomor_hp varchar(10),
 	password varchar(10),
@@ -12,6 +12,6 @@ create table customer (
 	id varchar(16),
 	nama varchar(20),
 	nomorIdentitas varchar(15),
-	nomorKendaraan varhcar(10),
+	nomorKendaraan varchar(10),
 	nomorTelepon varchar(10),
 	primary key (id));
