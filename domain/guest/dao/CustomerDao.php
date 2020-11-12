@@ -5,14 +5,11 @@ $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/guest/entity/Customer.php";
 require_once($tempA);
 
 use domain\guest\entity as Entity;
+use domain\support\db\DbUtil;
 
 class CustomerDao {
     public function getAll() {
-        $conn = mysqli_connect("localhost", "admin", "admin", "hotel");
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+        $conn = DbUtil::getConnection();
 
         $sql = "select * from customer";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
@@ -34,11 +31,7 @@ class CustomerDao {
     }
 
     public function createNew(Entity\Customer $newCustomer) {
-        $conn = mysqli_connect("localhost", "admin", "admin", "hotel");
-        // Check connection
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+        $conn = DbUtil::getConnection();
 
         //prepare
         $id = $newCustomer->getId();
