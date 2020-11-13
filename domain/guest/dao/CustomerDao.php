@@ -1,16 +1,18 @@
 <?php
 namespace domain\guest\dao;
 $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/guest/entity/Customer.php";
+$tempB = $_SERVER['DOCUMENT_ROOT']."/domain/support/db/DbUtil.php";
 
 require_once($tempA);
 
 use domain\guest\entity as Entity;
-use domain\support\db\DbUtil;
+use domain\support\db as Db;
 
 class CustomerDao {
     public function getAll() {
-        $conn = DbUtil::getConnection();
-
+        
+        $conn = Db\DbUtil::getConnection();
+        
         $sql = "select * from customer";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
