@@ -4,6 +4,7 @@ $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/guest/entity/Customer.php";
 $tempB = $_SERVER['DOCUMENT_ROOT']."/domain/support/db/DbUtil.php";
 
 require_once($tempA);
+require_once($tempB);
 
 use domain\guest\entity as Entity;
 use domain\support\db as Db;
