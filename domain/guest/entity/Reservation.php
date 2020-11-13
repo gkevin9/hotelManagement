@@ -6,7 +6,7 @@ Class Reservation{
         private $bykOrang;
         private $kamar;
         private $lama;
-        private $nama;
+        private $idCust;
         private $namaPemesan;
         private $nomorTelepon;
         private $status;
@@ -29,11 +29,11 @@ Class Reservation{
           return $this->bykOrang;
         }
 
-        public function setKamar($kamar) {
+        public function setIdKamar($kamar) {
           $this->kamar = $kamar;
         }
 
-        public function getKamar() {
+        public function getIdKamar() {
           return $this->kamar;
         }
 
@@ -45,11 +45,11 @@ Class Reservation{
           return $this->lama;
         }
 
-        public function setNama($nama) {
+        public function setIdCust($nama) {
           $this->nama= $nama;
         }
 
-        public function getNama() {
+        public function getIdCust() {
           return $this->nama;
         }
 
