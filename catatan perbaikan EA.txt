@@ -1,0 +1,3 @@
+entity reservation dan customer:
+    nama di reservation harusnya bertipe customer, bukan string
+    nama => idCust
