@@ -28,7 +28,7 @@ create table kamar (
 create table reservation (
 	id varchar(10),
 	bykOrang int(3),
-	kamar varchar(10),
+	idKamar varchar(10),
 	lama int(2),
 	idCust varchar(16),
 	namaPemesan varchar(20),
@@ -36,6 +36,6 @@ create table reservation (
 	status varchar(10),
 	tanggalCheckin date,
 	primary key (id),
-	foreign key (kamar) references kamar(id),
+	foreign key (idKamar) references kamar(id),
 	foreign key (idCust) references customer(id)
 );
