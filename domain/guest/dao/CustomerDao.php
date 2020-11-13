@@ -33,7 +33,7 @@ class CustomerDao {
     }
 
     public function createNew(Entity\Customer $newCustomer) {
-        $conn = DbUtil::getConnection();
+        $conn = Db\DbUtil::getConnection();
 
         //prepare
         $id = $newCustomer->getId();
