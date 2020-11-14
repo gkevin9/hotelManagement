@@ -12,7 +12,7 @@ class NewBahanModel
 	private $exp_date;
 
 	public function setId($id) {
-		$this->$id = $id;
+		$this->id = $id;
 	}
 
 	public function getId() {
@@ -20,7 +20,7 @@ class NewBahanModel
 	}
 
 	public function setNama($nama) {
-		$this->$nama = $nama;
+		$this->nama = $nama;
 	}
 
 	public function getNama() {
@@ -28,7 +28,7 @@ class NewBahanModel
 	}
 
 	public function setHarga($harga) {
-		$this->$harga = $harga;
+		$this->harga = $harga;
 	}
 
 	public function getHarga() {
@@ -36,7 +36,7 @@ class NewBahanModel
 	}
 
 	public function setJumlah($jumlah) {
-		$this->$jumlah = $jumlah;
+		$this->jumlah = $jumlah;
 	}
 
 	public function getJumlah() {
@@ -44,7 +44,7 @@ class NewBahanModel
 	}
 
 	public function setExpDate($exp_date) {
-		$this->$exp_date = $exp_date;
+		$this->exp_date = $exp_date;
 	}
 
 	public function getExpDate() {

@@ -7,10 +7,8 @@ if (isset($_POST['submit'])){
 	require_once('../controller/BahanController.php');
 	require_once('../../../domain/kitchen/model/NewBahanModel.php');
 	
-	$id = $_POST['nama'][0].$_POST['id'];
-	
 	$newCust = new Model\NewBahanModel();
-	$newCust->setId($id);
+	$newCust->setId($_POST['id']);
 	$newCust->setNama($_POST['name']);
 	$newCust->setJumlah($_POST['jumlah']);
 	$newCust->setHarga($_POST['harga']);
