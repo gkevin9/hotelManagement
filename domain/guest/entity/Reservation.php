@@ -12,6 +12,7 @@ Class Reservation{
         private $status;
         private $tanggalCheckIn;
         private $customer;
+        private $idKamar;
 
         public function setId($id) {
           $this->id = $id;
@@ -29,11 +30,11 @@ Class Reservation{
           return $this->bykOrang;
         }
 
-        public function setKamar($kamar) {
+        public function setIdKamar($kamar) {
           $this->kamar = $kamar;
         }
 
-        public function getKamar() {
+        public function getIdKamar() {
           return $this->kamar;
         }
 

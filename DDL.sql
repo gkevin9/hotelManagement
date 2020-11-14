@@ -41,3 +41,35 @@ create table bahan_menu(
 	foreign key (id_bahan) REFERENCES bahan(id),
 	foreign key (id_menu) REFERENCES menu(id)
 );
+create table kategoriKamar (
+	id varchar(15),
+	nama varchar(20),
+	primary key (id)
+);
+
+insert into kategoriKamar values('1','standard'), ('2','deluxe'), ('3','suite'), ('4','president');
+
+create table kamar (
+	id varchar(10),
+	harga int(11),
+	kategori varchar(15),
+	nomor_kamar int(3),
+	status int (1),
+	primary key (id),
+	foreign key (kategori) references kategoriKamar(id)
+);
+
+create table reservation (
+	id varchar(10),
+	bykOrang int(3),
+	kamar varchar(10),
+	lama int(2),
+	nama varchar(16),
+	namaPemesan varchar(20),
+	nomorTelepon varchar(10),
+	status varchar(10),
+	tanggalCheckin date,
+	primary key (id),
+	foreign key (kamar) references kamar(id),
+	foreign key (nama) references customer(id)
+);

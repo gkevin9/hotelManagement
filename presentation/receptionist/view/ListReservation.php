@@ -28,28 +28,46 @@
 		</nav>
 		<div class="container-fluid">
 			<br>
-				<a href="reservation/newreservation" class="btn btn-primary">+ New Reservation</a>
-			<!-- <div class="card-deck">
-				{{#reservationList}}
-				<div class="card">
-					<div class="card-body">
-				    	<h5 class="card-title">Id : {{id}}</h5>
-				    	<p class="card-text">
-				    		Name : {{nama}}<br>
-				    		Kamar :<br>
-				    		Tgl Checkin : {{tanggalCheckin}}<br>
-				    		Lama : {{lama}}<br>
-				    		Nama : {{nama}}<br>
-				    		No Hp : {{nomorTelepon}}<br>
-				    		Nama Pemesan : {{namaPemesan}}<br>
-				    		nomorTelepon : {{nomorTelepon}}<br>
-				    		
-				    	</p>
-				  	</div>
-				  	<div class="card-footer">{{status}}</div>
-				</div>	
-				{{/reservationList}}
-			</div> -->
+				<a href="NewReservation.php" class="btn btn-primary">+ New Reservation</a>
+			<br><br>
+			<table class="table table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Order Name</th>
+						<th scope="col">Person Name</th>
+						<th scope="col">Total Person</th>
+						<th scope="col">Check In Date</th>
+						<th scope="col">Day Staying</th>
+						<th scope="col">Room</th>
+						<th scope="col">Phone Num</th>
+						<th scope="col">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php
+				require_once('../controller/ReservationController.php');
+
+				use presentation\receptionist\controller as Ctrl;
+				$controller = new Ctrl\ReserevationController();
+				$list = $controller->getAll();
+
+				foreach ($list as $reservation) {
+					echo "<tr>";
+					echo "<td>".$reservation->getId()."</td>";
+					echo "<td>".$reservation->getNamaPemesan()."</td>";
+					echo "<td>".$reservation->getIdCust()."</td>";
+					echo "<td>".$reservation->getBykOrang()."</td>";
+					echo "<td>".$reservation->getTanggalCheckin()."</td>";
+					echo "<td>".$reservation->getLama()."</td>";
+					echo "<td>".$reservation->getIdKamar()."</td>";
+					echo "<td>".$reservation->getNomorTelepon()."</td>";
+					echo "<td>".$reservation->getStatus()."</td>";
+					echo "</tr>";
+				}
+				?>
+				</tbody>
+			</table>
 		</div>	
 	</body>
 </html>

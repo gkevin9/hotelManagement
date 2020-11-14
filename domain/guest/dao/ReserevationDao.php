@@ -1,6 +1,6 @@
 <?php
 namespace domain\guest\dao;
-$tempA = $_SERVER['DOCUMENT_ROOT']."/domain/guest/entity/Customer.php";
+$tempA = $_SERVER['DOCUMENT_ROOT']."/domain/guest/entity/Reservation.php";
 $tempB = $_SERVER['DOCUMENT_ROOT']."/domain/support/db/DbUtil.php";
 
 require_once($tempA);
@@ -9,28 +9,32 @@ require_once($tempB);
 use domain\guest\entity as Entity;
 use domain\support\db as Db;
 
-class CustomerDao {
+class ReservationDao {
     public function getAll() {
         
         $conn = Db\DbUtil::getConnection();
         
-        $sql = "select * from customer";
+        $sql = "select * from reservation";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
-        $listCustomer = array();
+        $listReservation = array();
 
         while ($row = mysqli_fetch_array($result)) {
-            $customer = new Entity\Customer();
-            $customer->setId( $row['id'] );
-            $customer->setNama( $row['nama'] );
-            $customer->setNomorIdentitas( $row['nomorIdentitas'] );
-            $customer->setNomorKendaraan( $row['nomorKendaraan'] );
-            $customer->setNomorTelepon( $row['nomorTelepon'] );
+            $reservation = new Entity\Reservation();
+            $reservation->setId( $row['id'] );
+            $reservation->setBykOrang( $row['bykOrang'] );
+            $reservation->setIdKamar( $row['idKamar'] );
+            $reservation->setLama( $row['lama'] );
+            $reservation->setIdCust( $row['lama'] );
+            $reservation->setNamaPemesan( $row['namaPemesan'] );
+            $reservation->setNomorTelepon( $row['nomorTelepon'] );
+            $reservation->setStatus( $row['status'] );
+            $reservation->setTanggalCheckIn( $row['tanggalCheckin'] );
             
-            array_push($listCustomer, $customer);
+            array_push($listReservation, $reservation);
         }
 
-        return $listCustomer;
+        return $listReservation;
     }
 
     public function createNew(Entity\Customer $newCustomer) {
