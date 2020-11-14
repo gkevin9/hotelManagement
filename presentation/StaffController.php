@@ -26,6 +26,8 @@ if (isset($_POST['submit'])) {
             header('Location: receptionist/view/ListCustomer.php');
         }else if ($role == "Chef") {
             header('Location: kitchen/view/ListBahan.php');
+        }else if ($role == "OperationSupervisor") {
+            header('Location: humanresource/view/ListStaff.php');
         }
         
     
