@@ -18,6 +18,7 @@ class BahanService {
     $dao = new Dao\BahanDao();
     $listBahan = $dao->getAll();
 
+    // echo $listBahan[1]->getId();
     return $listBahan;
   }
 
