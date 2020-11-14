@@ -16,26 +16,35 @@ create table customer (
 	nomorTelepon varchar(10),
 	primary key (id));
 
+create table kategoriKamar (
+	id varchar(15),
+	nama varchar(20),
+	primary key (id)
+);
+
+insert into kategoriKamar values('1','standard'), ('2','deluxe'), ('3','suite'), ('4','president');
+
 create table kamar (
-	id varhcar(10),
+	id varchar(10),
 	harga int(11),
 	kategori varchar(15),
 	nomor_kamar int(3),
 	status int (1),
-	primary key (id)
+	primary key (id),
+	foreign key (kategori) references kategoriKamar(id)
 );
 
 create table reservation (
 	id varchar(10),
 	bykOrang int(3),
-	idKamar varchar(10),
+	kamar varchar(10),
 	lama int(2),
-	idCust varchar(16),
+	nama varchar(16),
 	namaPemesan varchar(20),
 	nomorTelepon varchar(10),
 	status varchar(10),
 	tanggalCheckin date,
 	primary key (id),
-	foreign key (idKamar) references kamar(id),
-	foreign key (idCust) references customer(id)
+	foreign key (kamar) references kamar(id),
+	foreign key (nama) references customer(id)
 );

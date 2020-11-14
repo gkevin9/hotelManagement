@@ -6,12 +6,13 @@ Class Reservation{
         private $bykOrang;
         private $kamar;
         private $lama;
-        private $idCust;
+        private $nama;
         private $namaPemesan;
         private $nomorTelepon;
         private $status;
         private $tanggalCheckIn;
         private $customer;
+        private $idKamar;
 
         public function setId($id) {
           $this->id = $id;
@@ -45,11 +46,11 @@ Class Reservation{
           return $this->lama;
         }
 
-        public function setIdCust($nama) {
+        public function setNama($nama) {
           $this->nama= $nama;
         }
 
-        public function getIdCust() {
+        public function getNama() {
           return $this->nama;
         }
 
