@@ -1,12 +1,13 @@
 <?php
 namespace presentation;
-include "../domain/humanresource/model/StaffLoginModel.php";
-include "../domain/humanresource/service/StaffService.php";
+require_once("../domain/humanresource/model/StaffLoginModel.php");
+require_once("../domain/humanresource/service/StaffService.php");
 
 use domain\humanresource\model as Model;
 use domain\humanresource\service as Service;
 
 if (isset($_POST['submit'])) {
+    $role = $_POST['role'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     
@@ -15,13 +16,19 @@ if (isset($_POST['submit'])) {
     $staff->setPassword($password);
     
     $controller = new StaffController();
-    $isValid = $controller->validateStaff($staff);
+    $isValid = $controller->validateStaff($staff,$role);
     
     if ($isValid) {
         session_start();
         $_SESSION["email"] = $email;
         // $_SESSION["role"] = "admin";
-        header('Location: receptionist/view/ListCustomer.php');
+        if ($role == "Receptionist") {
+            header('Location: receptionist/view/ListCustomer.php');
+        }else if ($role == "Chef") {
+            header('Location: kitchen/view/ListBahan.php');
+        }
+        
+    
     }else {
         echo "GAGAL";
     }
@@ -29,10 +36,10 @@ if (isset($_POST['submit'])) {
 
 class StaffController {
     
-    public function validateStaff(Model\StaffLoginModel $staff) {
+    public function validateStaff(Model\StaffLoginModel $staff,$role) {
         
         $service = new Service\StaffService();
-        $isValidate = $service->validateCredential($staff);
+        $isValidate = $service->validateCredential($staff,$role);
         
         return $isValidate;
     }

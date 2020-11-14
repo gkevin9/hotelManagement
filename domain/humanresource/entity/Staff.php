@@ -3,6 +3,7 @@
  *
  */
 namespace domain\humanresource\entity;
+
 class Staff {
 	private $id;
 	private $email;

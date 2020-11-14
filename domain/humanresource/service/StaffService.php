@@ -4,8 +4,8 @@ $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/dao/StaffDao.php";
 $tempB = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/model/StaffLoginModel.php";
 $tempC = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/entity/Staff.php";
 
-include $tempA;
-include $tempC;
+require_once($tempA);
+require_once($tempC);
 
 use domain\humanresource\entity as Entity; 
 use domain\humanresource\model as Model;
@@ -21,7 +21,7 @@ class StaffService {
     //     echo "5.5.6";
     // }
 
-    public function validateCredential(Model\StaffLoginModel $staffLogin) {
+    public function validateCredential(Model\StaffLoginModel $staffLogin,$role) {
         // var_dump(file_exists($_SERVER['DOCUMENT_ROOT']."/domain/humanresource/dao/StaffDao.php"));
         // echo $_SERVER['DOCUMENT_ROOT'];
         //echo getcwd()
@@ -32,8 +32,8 @@ class StaffService {
         $staff = new Entity\Staff();
         $staff->setEmail($staffLogin->getEmail());
         $staff->setPassword($staffLogin->getPassword());
-
-        $result = $dao->getStaff($staff);
+        
+        $result = $dao->getStaff($staff,$role);
 
         //true ato false
         return $result;
