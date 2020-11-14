@@ -33,8 +33,8 @@ class CustomerService {
     $dao->createNew($customer);
   }
 
-  public function edit(Customer $cust) {
+  // public function edit(Customer $cust) {
     
-  }
+  // }
 }
 ?>

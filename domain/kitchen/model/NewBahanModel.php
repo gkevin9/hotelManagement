@@ -3,7 +3,7 @@
  * Kevin
  */
 namespace domain\kitchen\model;
-class Bahan
+class NewBahanModel
 {
 	private $id;
 	private $nama;
@@ -16,7 +16,7 @@ class Bahan
 	}
 
 	public function getId() {
-		return $id;
+		return $this->id;
 	}
 
 	public function setNama($nama) {
@@ -24,7 +24,7 @@ class Bahan
 	}
 
 	public function getNama() {
-		return $nama;
+		return $this->nama;
 	}
 
 	public function setHarga($harga) {
@@ -32,7 +32,7 @@ class Bahan
 	}
 
 	public function getHarga() {
-		return $harga;
+		return $this->harga;
 	}
 
 	public function setJumlah($jumlah) {
@@ -40,7 +40,7 @@ class Bahan
 	}
 
 	public function getJumlah() {
-		return $jumlah;
+		return $this->jumlah;
 	}
 
 	public function setExpDate($exp_date) {
@@ -48,7 +48,7 @@ class Bahan
 	}
 
 	public function getExpDate() {
-		return $exp_date;
+		return $this->exp_date;
 	}
 }
 ?>

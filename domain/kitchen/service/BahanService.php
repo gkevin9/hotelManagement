@@ -27,14 +27,11 @@ class BahanService {
     $bahan->setNama($bahanModel->getNama());
     $bahan->setJumlah($bahanModel->getJumlah());
     $bahan->setHarga($bahanModel->getHarga());
-    $bahan->setExp_Date($bahanModel->getExp_Date());
+    $bahan->setExpDate($bahanModel->getExpDate());
 
     $dao = new Dao\BahanDao();
     $dao->createNew($bahan);
   }
 
-  public function update(Bahan $bahan , Model\NewBahanModel $bahanNew) {
-    
-  }
 }
 ?>

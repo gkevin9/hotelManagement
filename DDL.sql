@@ -22,7 +22,7 @@ create table bahan(
 	jumlah int(100),
 	harga float(6),
 	exp_date date,
-	primary key (id));
+	primary key (id)
 );
 
 create table menu(
@@ -30,7 +30,7 @@ create table menu(
 	nama varchar(20),
 	jenis varchar(20),
 	harga float(6),
-	primary key (id));
+	primary key (id)
 );
 
 create table bahan_menu(
@@ -41,6 +41,7 @@ create table bahan_menu(
 	foreign key (id_bahan) REFERENCES bahan(id),
 	foreign key (id_menu) REFERENCES menu(id)
 );
+
 create table kategoriKamar (
 	id varchar(15),
 	nama varchar(20),

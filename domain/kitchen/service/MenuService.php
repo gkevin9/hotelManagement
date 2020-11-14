@@ -25,15 +25,11 @@ class MenuService {
     $menu = new Entity\Menu();
     $menu->setId($menuModel->getId());
     $menu->setNama($menuModel->getNama());
-    $menu->setJenis($custModel->getNomorIdentitas());
-    $menu->setHarga($custModel->getNomorKendaraan());
+    $menu->setJenis($menuModel->getNama());
+    $menu->setHarga($menuModel->getHarga());
     
     $dao = new Dao\MenuDao();
     $dao->createNew($menu);
-  }
-
-  public function edit(Customer $cust) {
-    
   }
 }
 ?>

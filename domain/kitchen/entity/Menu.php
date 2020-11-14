@@ -9,14 +9,13 @@ class Menu
 	private $nama;
 	private $jenis;
 	private $harga;
-	private $listBahan;
 
 	public function setId($id) {
 		$this->$id = $id;
 	}
 
 	public function getId() {
-		return $id;
+		return $this->id;
 	}
 
 	public function setNama($nama) {
@@ -24,7 +23,7 @@ class Menu
 	}
 
 	public function getNama() {
-		return $nama;
+		return $this->nama;
 	}
 
 	public function setJenis($jenis) {
@@ -32,7 +31,7 @@ class Menu
 	}
 
 	public function getJenis() {
-		return $jenis;
+		return $this->jenis;
 	}
 
 	public function setHarga($harga) {
@@ -40,7 +39,7 @@ class Menu
 	}
 
 	public function getHarga() {
-		return $harga;
+		return $this->harga;
 	}
 }
 ?>
