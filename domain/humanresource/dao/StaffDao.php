@@ -42,7 +42,7 @@ class StaffDao {
         }
     }
 
-    public function getAllStaff(Entity\Staff $staff) {
+    public function getAll() {
         $conn = Db\DbUtil::getConnection();
 
         $sql = "select * from staff";
@@ -55,7 +55,7 @@ class StaffDao {
             $staff->setId( $row["id"] );
             $staff->setEmail( $row["email"] );
             $staff->setNama( $row["nama"] );
-            $staff->setNomorHp( $row[""] );
+            $staff->setNomorHp( $row["nomor_hp"] );
             $staff->setPassword( $row["password"] );
             $staff->setPekerjaan( $row["pekerjaan"] );
             $staff->setStatus( $row["status"] );
@@ -64,6 +64,27 @@ class StaffDao {
         }
 
         return $listStaff;
+    }
+
+    public function createNew(Entity\Staff $newStaff) {
+        $conn = Db\DbUtil::getConnection();
+
+        $id = $newStaff->getId();
+        $email = $newStaff->getEmail();
+        $nama = $newStaff->getNama();
+        $nomorHp = $newStaff->getNomorHp();
+        $password = $newStaff->getPassword();
+        $pekerjaan = $newStaff->getPekerjaan();
+        $status = $newStaff->getStatus();
+
+        $sql = $conn->prepare("insert into staff values(?,?,?,?,?,?,?)");
+        $sql->bind_param("sssssss", $id,$email,$nama,$nomorHp,$password,$pekerjaan,$status);
+
+        if(!$sql->execute()){
+            die(htmlspecialchars($sql->error));
+        }
+
+        $sql->close();
     }
 }
 

@@ -5,6 +5,7 @@ $tempB = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/model/StaffLoginModel.
 $tempC = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/entity/Staff.php";
 
 require_once($tempA);
+require_once($tempB);
 require_once($tempC);
 
 use domain\humanresource\entity as Entity; 
@@ -37,6 +38,27 @@ class StaffService {
 
         //true ato false
         return $result;
+    }
+
+    public function getAllStaff() {
+        $dao = new Dao\StaffDao();
+        $listStaff = $dao->getAll();
+
+        return $listStaff;
+    }
+
+    public function createNew(Model\NewStaffModel $staffModel) {
+        $staff = new Entity\Staff();
+        $staff->setId($staffModel->getId());
+        $staff->setEmail($staffModel->getEmail());
+        $staff->setNama($staffModel->getNama());
+        $staff->setNomorHp($staffModel->getNomorHp());
+        $staff->setPassword($staffModel->getPassword());
+        $staff->setPekerjaan($staffModel->getPekerjaan());
+        $staff->setStatus($staffModel->getStatus());
+
+        $dao = new Dao\StaffDao();
+        $dao->createNew($staff);
     }
 }
 ?>
