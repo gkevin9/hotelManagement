@@ -1,6 +1,6 @@
 <?php
 namespace domain\room\entity;
-Class kamar{
+Class Kamar{
         private $harga;
         private $jmlh_org;
         private $kategori;

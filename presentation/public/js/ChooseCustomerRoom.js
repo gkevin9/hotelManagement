@@ -8,4 +8,11 @@ $(document).ready(function() {
         $('#hidden-id').val(temp[0]);
         $('#custModal').modal('hide');
     })
+
+    $('#chooseRoom').click(function() {
+        var name = $('input:radio[name="radioRoom"]:checked').val();
+        
+        $('#kamar').val(name);
+        $('#roomModal').modal('hide');
+    })
 })

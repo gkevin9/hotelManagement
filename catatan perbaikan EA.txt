@@ -1,6 +1,6 @@
 entity reservation dan customer:
     nama di reservation harusnya bertipe customer, bukan string
-    nama => idCust.
 
     kamar di reservation harusnya bertipe kamar, bukan string
-    kamar => idKamar;
+
+entity kamar ada kurang id kamar?
