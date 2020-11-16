@@ -12,7 +12,7 @@ class NewMenuModel
 	private $listBahan;
 
 	public function setId($id) {
-		$this->$id = $id;
+		$this->id = $id;
 	}
 
 	public function getId() {
@@ -20,7 +20,7 @@ class NewMenuModel
 	}
 
 	public function setNama($nama) {
-		$this->$nama = $nama;
+		$this->nama = $nama;
 	}
 
 	public function getNama() {
@@ -28,7 +28,7 @@ class NewMenuModel
 	}
 
 	public function setJenis($jenis) {
-		$this->$jenis = $jenis;
+		$this->jenis = $jenis;
 	}
 
 	public function getJenis() {
@@ -36,7 +36,7 @@ class NewMenuModel
 	}
 
 	public function setHarga($harga) {
-		$this->$harga = $harga;
+		$this->harga = $harga;
 	}
 
 	public function getHarga() {

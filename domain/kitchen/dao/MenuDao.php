@@ -1,15 +1,18 @@
 <?php
 namespace domain\kitchen\dao;
-$tempA = $_SERVER['DOCUMENT_ROOT']."/domain/kicthen/entity/Menu.php";
+$tempA = $_SERVER['DOCUMENT_ROOT']."/domain/kitchen/entity/Menu.php";
+$tempB = $_SERVER['DOCUMENT_ROOT']."/domain/support/db/DbUtil.php";
 
 require_once($tempA);
+require_once($tempB);
 
 use domain\kitchen\entity as Entity;
-use domain\support\db\DbUtil;
+use domain\kitchen\model as Model;
+use domain\support\db as DbUtil;
 
 class MenuDao {
     public function getAll() {
-        $conn = DbUtil::getConnection();
+        $conn = DbUtil\DbUtil::getConnection();
 
         $sql = "select * from menu";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
@@ -30,7 +33,7 @@ class MenuDao {
     }
 
     public function createNew(Entity\Menu $newMenu) {
-        $conn = DbUtil::getConnection();
+        $conn = DbUtil\DbUtil::getConnection();
 
         //prepare
         $id = $newMenu->getId();

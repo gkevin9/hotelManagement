@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Bahan</title>
+		<title>Menu</title>
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
@@ -12,48 +12,46 @@
 		  	<div class="collapse navbar-collapse" id="navbarNav">
 		    	<ul class="navbar-nav">
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="ListMenu.php">Menu</a>
+		        		<a class="nav-link" href="ListBahan.php">List Bahan</a>
 		      		</li>
 		      		<li class="nav-item  active">
 		        		<a class="nav-link" href="">Nama<span class="sr-only">(current)</span></a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="#">Add Menu</a>
+		        		<a class="nav-link" href="#">Add Bahan</a>
 		      		</li>
 		    	</ul>
 		  	</div>
 		</nav>
 		<div class="container-fluid">
 			<br>
-			<a href="NewBahan.php" class="btn btn-primary">+ New Bahan</a>
+			<a href="NewMenu.php" class="btn btn-primary">+ New Menu</a>
 			<br><br>
 			<table class="table table-hover">
 				<thead class="thead-dark">
 					<tr>
 						<th scope="col">Id</th>
 						<th scope="col">Name</th>
+						<th scope="col">Jenis</th>
 						<th scope="col">Harga</th>
-						<th scope="col">Jumlah</th>
-						<th scope="col">Expired Date</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
 					//tadinya mau lewat customer controller, trus datanya disimpen di session
 					//ternyata pas dikeluarin dari session, gabisa diambil object nya
-					require_once('../controller/BahanController.php');
+					require_once('../controller/MenuController.php');
 
 					use presentation\kitchen\controller as Ctrl;
-					$controller = new Ctrl\BahanController();
+					$controller = new Ctrl\MenuController();
 					$list = $controller->getAll();
 
-					foreach ($list as $bahan) {
+					foreach ($list as $menu) {
 						echo "<tr>";
-						echo "<td>".$bahan->getId()."</td>";
-						echo "<td>".$bahan->getNama()."</td>";
-						echo "<td>".$bahan->getJumlah()."</td>";
-						echo "<td>".$bahan->getHarga()."</td>";
-						echo "<td>".$bahan->getExpDate()."</td>";
+						echo "<td>".$menu->getId()."</td>";
+						echo "<td>".$menu->getNama()."</td>";
+						echo "<td>".$menu->getJenis()."</td>";
+						echo "<td>".$menu->getHarga()."</td>";
 						echo "</tr>";
 					}
 					?>
