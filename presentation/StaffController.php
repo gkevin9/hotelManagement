@@ -6,7 +6,7 @@ require_once("../domain/humanresource/service/StaffService.php");
 use domain\humanresource\model as Model;
 use domain\humanresource\service as Service;
 
-if (isset($_POST['submit'])) {
+// if (isset($_POST['submit'])) {
     $role = $_POST['role'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -23,18 +23,21 @@ if (isset($_POST['submit'])) {
         $_SESSION["email"] = $email;
         // $_SESSION["role"] = "admin";
         if ($role == "Receptionist") {
-            header('Location: receptionist/view/ListCustomer.php');
+            // header('Location: receptionist/view/ListCustomer.php');
+            print "presentation/receptionist/view/ListCustomer.php";
         }else if ($role == "Chef") {
-            header('Location: kitchen/view/ListBahan.php');
+            // header('Location: kitchen/view/ListBahan.php');
+            print "presentation/kitchen/view/ListBahan.php";
         }else if ($role == "OperationSupervisor") {
-            header('Location: humanresource/view/ListStaff.php');
+            // header('Location: humanresource/view/ListStaff.php');
+            print "presentation/humanresource/view/ListStaff.php";
         }
         
     
     }else {
-        echo "GAGAL";
+        print "failed";
     }
-}
+// }
 
 class StaffController {
     
