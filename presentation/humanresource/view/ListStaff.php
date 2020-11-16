@@ -32,6 +32,7 @@
 						<th scope="col">Role</th>
 						<th scope="col">Phone Num</th>
 						<th scope="col">Status</th>
+						<th scope="col">Edit</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -39,10 +40,12 @@
 					//tadinya mau lewat customer controller, trus datanya disimpen di session
 					//ternyata pas dikeluarin dari session, gabisa diambil object nya
 					require_once('../controller/OperationController.php');
+					require_once('../../../domain/humanresource/model/NewStaffModel.php');
 
 					use presentation\humanresource\controller as Ctrl;
 					$controller = new Ctrl\OperationController();
 					$list = $controller->getAll();
+					$pos = 0;
 
 					foreach ($list as $staff) {
 						echo "<tr>";
@@ -50,8 +53,21 @@
 						echo "<td>".$staff->getNama()."</td>";
 						echo "<td>".$staff->getPekerjaan()."</td>";
                         echo "<td>".$staff->getNomorHp()."</td>";
-                        echo "<td>".$staff->getStatus()."</td>";
+						echo "<td>".$staff->getStatus()."</td>";
+						echo "<form autocomplete='off' method='post' action='' id='editstaff'>";
+						echo "<td><button class='btn btn-primary' type='submit' name='edit'>Edit</button></td>";
+						echo "<input type='hidden' name='id' value='".$pos."'/>";
+						echo "</form>";
 						echo "</tr>";
+						$pos+=1;
+					}
+
+					if (isset($_POST['edit'])) {
+						$id = $_POST['id'];
+						session_start();
+						$staff_update = $list[$id];
+						$_SESSION['staff'] = serialize($staff_update);
+						header("Location: UpdateStaff.php");
 					}
 					?>
 				</tbody>

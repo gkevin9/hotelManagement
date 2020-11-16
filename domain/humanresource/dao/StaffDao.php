@@ -80,7 +80,28 @@ class StaffDao {
         $sql = $conn->prepare("insert into staff values(?,?,?,?,?,?,?)");
         $sql->bind_param("sssssss", $id,$email,$nama,$nomorHp,$password,$pekerjaan,$status);
 
-        if(!$sql->execute()){
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        $sql->close();
+    }
+
+    public function updateStaff(Entity\Staff $updateStaff) {
+        $conn = Db\DbUtil::getConnection();
+
+        $id = $updateStaff->getId();
+        $email = $updateStaff->getEmail();
+        $nama = $updateStaff->getNama();
+        $nomorHp = $updateStaff->getNomorHp();
+        $password = $updateStaff->getPassword();
+        $pekerjaan = $updateStaff->getPekerjaan();
+        $status = $updateStaff->getStatus();
+
+        $sql = $conn->prepare("update staff set email=?,nama=?,nomor_hp=?,password=?, pekerjaan=?,status=? where id=?");
+        $sql->bind_param("sssssss", $email,$nama,$nomorHp,$password,$pekerjaan,$status,$id);
+
+        if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
         }
 

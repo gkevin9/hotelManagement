@@ -21,6 +21,11 @@ class OperationController {
         $service = new Service\StaffService();
         $service->createNew($newStaff);
     }
+
+    public function updateStaff(Model\NewStaffModel $updateStaff) {
+        $service = new Service\StaffService();
+        $service->updateStaff($updateStaff);
+    }
 }
 
 ?>

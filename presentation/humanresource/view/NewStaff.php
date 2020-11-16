@@ -3,11 +3,9 @@ namespace presentation\receptionist\view;
 use domain\humanresource\model as Model;
 use presentation\humanresource\controller as Ctrl;
 
-if (isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 	require_once('../controller/OperationController.php');
 	require_once('../../../domain/humanresource/model/NewStaffModel.php');
-	
-	$id = $_POST['nama'][0].$_POST['nomorIdentitas'];
 	
 	$newStaff = new Model\NewStaffModel();
     $newStaff->setId($_POST['id']);
@@ -83,7 +81,7 @@ if (isset($_POST['submit'])){
                     <option value="Cashier">Cashier</option>
                     <option value="Housekeeper">Housekeeper</option>
                 </select>
-            </div>
+            	</div>
             </div>
             
 			<div class="form-group row">

@@ -60,5 +60,19 @@ class StaffService {
         $dao = new Dao\StaffDao();
         $dao->createNew($staff);
     }
+
+    public function updateStaff(Model\NewStaffModel $updateStaffModel){
+        $staff = new Entity\Staff();
+        $staff->setId($updateStaffModel->getId());
+        $staff->setEmail($updateStaffModel->getEmail());
+        $staff->setNama($updateStaffModel->getNama());
+        $staff->setNomorHp($updateStaffModel->getNomorHp());
+        $staff->setPassword($updateStaffModel->getPassword());
+        $staff->setPekerjaan($updateStaffModel->getPekerjaan());
+        $staff->setStatus($updateStaffModel->getStatus());
+
+        $dao = new Dao\StaffDao();
+        $dao->updateStaff($staff);
+    }
 }
 ?>
