@@ -52,5 +52,51 @@ class CustomerDao {
 
         $sql->close();
     }
+
+    public function getSelectedCustomer($customerId) {
+        $conn = Db\DbUtil::getConnection();
+        
+        $sql = $conn->prepare("select * from customer where id = ?");
+        $sql->bind_param("s", $customerId);
+        
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        if (!($res = $sql->get_result())) {
+            echo "Getting result set failed: (" . $sql->errno . ") " . $sql->error;
+        }
+        
+        $tempCustomer = $res->fetch_assoc();
+        $customer = new Entity\Customer();
+        $customer->setId($customerId);
+        $customer->setNama($tempCustomer['nama']);
+        $customer->setNomorIdentitas($tempCustomer['nomorIdentitas']);
+        $customer->setNomorKendaraan($tempCustomer['nomorKendaraan']);
+        $customer->setNomorTelepon($tempCustomer['nomorTelepon']);
+
+        return $customer;
+    }
+
+    public function update(Entity\Customer $customer) {
+        $conn = Db\DbUtil::getConnection();
+
+        //prepare
+        echo var_dump($customer);
+        $id = $customer->getId();
+        $nama = $customer->getNama();
+        $nomorIdentitas = $customer->getNomorIdentitas();
+        $nomorKendaraan = $customer->getNomorKendaraan();
+        $nomorTelepon = $customer->getNomorTelepon();
+
+        $sql = $conn->prepare("update customer set nama= ?, nomorIdentitas = ?, nomorKendaraan = ?, nomorTelepon = ? where id = ?");
+        $sql->bind_param("sssss", $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon, $id);
+        
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        $sql->close();
+    }
 }
 ?>

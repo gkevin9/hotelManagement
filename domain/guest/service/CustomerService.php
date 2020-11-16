@@ -33,8 +33,23 @@ class CustomerService {
     $dao->createNew($customer);
   }
 
-  // public function edit(Customer $cust) {
-    
-  // }
+  public function getSelectedCustomer($customerId) {
+    $dao = new Dao\CustomerDao();
+    $result = $dao->getSelectedCustomer($customerId);
+
+    return $result;
+  }
+
+  public function update(Model\NewCustomerModel $custModel) {
+    $customer = new Entity\Customer();
+    $customer->setId($custModel->getId());
+    $customer->setNama($custModel->getNama());
+    $customer->setNomorIdentitas($custModel->getNomorIdentitas());
+    $customer->setNomorKendaraan($custModel->getNomorKendaraan());
+    $customer->setNomorTelepon($custModel->getNomorTelepon());
+
+    $dao = new Dao\CustomerDao();
+    $dao->update($customer);
+  }
 }
 ?>

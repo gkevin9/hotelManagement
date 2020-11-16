@@ -22,6 +22,18 @@ class CustomerController {
         $service = new Service\CustomerService();
         $service->createNew($newCustomer);
     }
+
+    public function getSelected($customerId) {
+        $service = new Service\CustomerService();
+        $result = $service->getSelectedCustomer($customerId);
+
+        return $result;
+    }
+
+    public function update(Model\NewCustomerModel $customer) {
+        $service = new Service\CustomerService();
+        $service->update($customer);
+    }
 }
 
 ?>

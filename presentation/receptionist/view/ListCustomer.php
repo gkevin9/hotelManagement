@@ -38,6 +38,7 @@
 						<th scope="col">KTP</th>
 						<th scope="col">Vehicle Num</th>
 						<th scope="col">Phone Num</th>
+						<th scope="col">Edit</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,6 +58,7 @@
 						echo "<td>".$cust->getNomorIdentitas()."</td>";
 						echo "<td>".$cust->getNomorKendaraan()."</td>";
 						echo "<td>".$cust->getNomorTelepon()."</td>";
+						echo "<td><a href='EditCustomer.php?id=".$cust->getId()."'><button class='btn btn-warning'>Edit</button></a></td>";
 						echo "</tr>";
 					}
 					?>
