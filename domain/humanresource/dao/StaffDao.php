@@ -52,7 +52,6 @@ class StaffDao {
 
         while ($row = mysqli_fetch_array($result)){
             $staff = new Entity\Staff();
-            $staff->setId( $row["id"] );
             $staff->setEmail( $row["email"] );
             $staff->setNama( $row["nama"] );
             $staff->setNomorHp( $row["nomor_hp"] );
@@ -77,8 +76,8 @@ class StaffDao {
         $pekerjaan = $newStaff->getPekerjaan();
         $status = $newStaff->getStatus();
 
-        $sql = $conn->prepare("insert into staff values(?,?,?,?,?,?,?)");
-        $sql->bind_param("sssssss", $id,$email,$nama,$nomorHp,$password,$pekerjaan,$status);
+        $sql = $conn->prepare("insert into staff values(?,?,?,?,?,?)");
+        $sql->bind_param("ssssss", $email,$nama,$nomorHp,$password,$pekerjaan,$status);
 
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
@@ -106,6 +105,29 @@ class StaffDao {
         }
 
         $sql->close();
+    }
+
+    public function validateEmail($email) {
+        $conn = Db\DbUtil::getConnection();
+        
+        $sql = $conn->prepare("select * from staff where email=?");
+        $sql->bind_param("s",$email);
+
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        if (!($res = $sql->get_result())) {
+            echo "Getting result set failed: (" . $sql->errno . ") " . $sql->error;
+        }
+        $count = count($res->fetch_all());
+        $res->close();
+        
+        if ($count == 1) {//kalo email bener
+            return False;
+        }else {
+            return True;
+        }
     }
 }
 

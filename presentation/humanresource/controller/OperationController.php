@@ -17,11 +17,6 @@ class OperationController {
         return $listCustomer;
     }
 
-    public function createNew(Model\NewStaffModel $newStaff) {
-        $service = new Service\StaffService();
-        $service->createNew($newStaff);
-    }
-
     public function updateStaff(Model\NewStaffModel $updateStaff) {
         $service = new Service\StaffService();
         $service->updateStaff($updateStaff);

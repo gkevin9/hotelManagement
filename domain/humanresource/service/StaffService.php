@@ -74,5 +74,11 @@ class StaffService {
         $dao = new Dao\StaffDao();
         $dao->updateStaff($staff);
     }
+
+    public function validateEmail($email) {
+        $dao = new Dao\StaffDao();
+        $isValid = $dao->validateEmail($email);
+        return $isValid;
+    }
 }
 ?>

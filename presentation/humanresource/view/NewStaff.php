@@ -1,56 +1,23 @@
-<?php
-namespace presentation\receptionist\view;
-use domain\humanresource\model as Model;
-use presentation\humanresource\controller as Ctrl;
-
-if (isset($_POST['submit'])) {
-	require_once('../controller/OperationController.php');
-	require_once('../../../domain/humanresource/model/NewStaffModel.php');
-	
-	$newStaff = new Model\NewStaffModel();
-    $newStaff->setId($_POST['id']);
-    $newStaff->setEmail($_POST['email']);
-	$newStaff->setNama($_POST['nama']);
-	$newStaff->setNomorHp($_POST['nomorHp']);
-	$newStaff->setPassword($_POST['password']);
-    $newStaff->setPekerjaan($_POST['role']);
-    $newStaff->setStatus("Active");
-
-	$ctrl = new Ctrl\OperationController();
-	$ctrl->createNew($newStaff);
-
-	header("Location: ListStaff.php");
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>New Staff</title>
 	<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="../../public/js/postrequestcustomer.js"></script>
+	<script src="../js/ajax/ValidateStaff.js"></script>
 </head>
 <body>
 	<div class="container">
 		<br>
 		<h1>New Staff</h1>
 		<br>
-		<form autocomplete="off" method="post" action="" id="newcustomer">
-            <div class="form-group row">
-				<label class="col-sm-2 col-form-label">ID</label>
-				<div class='col-sm-3'>
-					<input type="text" name="id" required id="id" class="form-control">
-					<div class='invalid-feedback'>
-						There is duplicate ID, please check again
-					</div>
-				</div>
-            </div>
+		<form autocomplete="off" method="post" action="" id="newstaff">
             <div class="form-group row">
 				<label class="col-sm-2 col-form-label">Email</label>
 				<div class="col-sm-3">
 					<input type="email" name="email" required id="email" autofocus class="form-control">
 				</div>
+				
 			</div>
             <div class="form-group row">
 				<label class="col-sm-2 col-form-label">Name</label>
@@ -90,6 +57,8 @@ if (isset($_POST['submit'])) {
 					<button class="btn btn-primary mb-2" name='submit'>Save</button>
 				</div>
 			</div>
+
+			<div id="cek_email"></div>
 		</form>
 	</div>
 </body>
