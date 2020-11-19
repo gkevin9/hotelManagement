@@ -86,8 +86,7 @@ class StaffDao {
 
     public function updateStaff(Entity\Staff $updateStaff) {
         $conn = Db\DbUtil::getConnection();
-
-        $id = $updateStaff->getId();
+        
         $email = $updateStaff->getEmail();
         $nama = $updateStaff->getNama();
         $nomorHp = $updateStaff->getNomorHp();

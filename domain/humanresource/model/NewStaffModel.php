@@ -2,21 +2,12 @@
 namespace domain\humanresource\model;
 
 class NewStaffModel {
-    private $id;
 	private $email;
 	private $nama;
 	private $nomor_hp;
 	private $password;
 	private $pekerjaan;
 	private $status;
-
-	public function setId($id) {
-		$this->id = $id;
-	}
-
-	public function getId() {
-		return $this->id;
-	}
 
 	public function setEmail($email) {
 		$this->email = $email;

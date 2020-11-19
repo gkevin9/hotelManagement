@@ -27,7 +27,7 @@
 			<table class="table table-hover">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">Id</th>
+						<th scope="col">Email</th>
 						<th scope="col">Name</th>
 						<th scope="col">Role</th>
 						<th scope="col">Phone Num</th>
@@ -49,7 +49,7 @@
 
 					foreach ($list as $staff) {
 						echo "<tr>";
-						echo "<td>".$staff->getId()."</td>";
+						echo "<td>".$staff->getEmail()."</td>";
 						echo "<td>".$staff->getNama()."</td>";
 						echo "<td>".$staff->getPekerjaan()."</td>";
                         echo "<td>".$staff->getNomorHp()."</td>";

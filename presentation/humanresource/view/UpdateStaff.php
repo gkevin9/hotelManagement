@@ -10,7 +10,6 @@
         require_once('../../../domain/humanresource/model/NewStaffModel.php');
         
         $newStaff = new Model\NewStaffModel();
-        $newStaff->setId($staff->getId());
         $newStaff->setEmail($_POST['email']);
         $newStaff->setNama($_POST['nama']);
         $newStaff->setNomorHp($_POST['nomorHp']);
