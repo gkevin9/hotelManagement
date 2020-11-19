@@ -3,7 +3,7 @@ create table staff (
 	email varchar(25),
 	nama varchar(20),
 	nomor_hp varchar(10),
-	password varchar(10),
+	password varchar(225),
 	pekerjaan varchar(20),
 	status varchar(10),
 	primary key (id));
