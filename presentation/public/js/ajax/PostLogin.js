@@ -18,6 +18,7 @@ $( document ).ready(function() {
           url : "/presentation/StaffController.php",
           data : formData,
           success : function(param) {
+            console.log(param);
             if (param == "failed") {
               $("#errorMsg").html('<div class="alert alert-danger" role="alert">Email or Password Incorrect</div>'); 
             }else {

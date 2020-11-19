@@ -11,35 +11,33 @@ use domain\humanresource\entity as Entity;
 use domain\support\db as Db;
 
 class StaffDao {
-    
+
     public function getStaff(Entity\Staff $staff,$role) {
- 
+
         $conn = Db\DbUtil::getConnection();
 
         //taro di variable
         $email = $staff->getEmail();
         $password = $staff->getPassword();
-        
-        $sql = $conn->prepare("select id from staff where email = ? and password = ? and pekerjaan = ?");
-        $sql->bind_param("sss", $email, $password,$role);
-        
-        // $sql->execute();
 
-        if (!$sql->execute()) {
-            die(htmlspecialchars($sql->error));
-        }
+        $sql = $conn->prepare("select * from staff where email = ? and pekerjaan = ?");
+        $sql->bind_param("ss", $email,$role);
 
-        if (!($res = $sql->get_result())) {
-            echo "Getting result set failed: (" . $sql->errno . ") " . $sql->error;
-        }
-        $count = count($res->fetch_all());
-        $res->close();
-        
-        if ($count == 1) {//kalo email dan password bener
-            return True;
+        $sql->execute();
+        $data = $sql->get_result();
+        $row = $data->fetch_assoc();
+
+        if($row != null) {
+            if(password_verify($password, $row['password'])) {
+                return True;
+            }else {
+                return False;
+            }
         }else {
             return False;
         }
+
+        $sql->close();
     }
 
     public function getAll() {
@@ -68,16 +66,16 @@ class StaffDao {
     public function createNew(Entity\Staff $newStaff) {
         $conn = Db\DbUtil::getConnection();
 
-        $id = $newStaff->getId();
         $email = $newStaff->getEmail();
         $nama = $newStaff->getNama();
         $nomorHp = $newStaff->getNomorHp();
         $password = $newStaff->getPassword();
         $pekerjaan = $newStaff->getPekerjaan();
         $status = $newStaff->getStatus();
+        $passwordEncrypt = password_hash($password, PASSWORD_DEFAULT);
 
         $sql = $conn->prepare("insert into staff values(?,?,?,?,?,?)");
-        $sql->bind_param("ssssss", $email,$nama,$nomorHp,$password,$pekerjaan,$status);
+        $sql->bind_param("ssssss", $email,$nama,$nomorHp,$passwordEncrypt,$pekerjaan,$status);
 
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
@@ -109,7 +107,7 @@ class StaffDao {
 
     public function validateEmail($email) {
         $conn = Db\DbUtil::getConnection();
-        
+
         $sql = $conn->prepare("select * from staff where email=?");
         $sql->bind_param("s",$email);
 
@@ -122,7 +120,7 @@ class StaffDao {
         }
         $count = count($res->fetch_all());
         $res->close();
-        
+
         if ($count == 1) {//kalo email bener
             return False;
         }else {
