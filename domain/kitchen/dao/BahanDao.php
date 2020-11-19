@@ -10,8 +10,37 @@ require_once($tempB);
 use domain\kitchen\entity as Entity;
 use domain\kitchen\model as Model;
 use domain\support\db as DbUtil;
+use domain\support\db\DbUtil as DbDbUtil;
 
 class BahanDao {
+
+    public function getId($id) {
+ 
+        $conn = DbUtil\DbUtil::getConnection();
+
+        //taro di variable
+        $sql = $conn->prepare("select * from bahan where id = ?");
+        $sql->bind_param("s", $id);
+        
+        // $sql->execute();
+
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        if (!($res = $sql->get_result())) {
+            echo "Getting result set failed: (" . $sql->errno . ") " . $sql->error;
+        }
+        $count = count($res->fetch_all());
+        $res->close();
+        
+        if ($count == 1) {
+            return False;
+        }else {
+            return True;
+        }
+    }
+
     public function getAll() {
         $conn = DbUtil\DbUtil::getConnection();
 

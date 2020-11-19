@@ -1,40 +1,18 @@
-<?php
-namespace presentation\kitchen\view;
-use domain\kitchen\model as Model;
-use presentation\kitchen\controller as Ctrl;
-
-if (isset($_POST['submit'])){
-	require_once('../controller/BahanController.php');
-	require_once('../../../domain/kitchen/model/NewBahanModel.php');
-	
-	$newCust = new Model\NewBahanModel();
-	$newCust->setId($_POST['id']);
-	$newCust->setNama($_POST['name']);
-	$newCust->setJumlah($_POST['jumlah']);
-	$newCust->setHarga($_POST['harga']);
-	$newCust->setExpDate($_POST['exp_date']);
-
-	$ctrl = new Ctrl\BahanController();
-	$ctrl->createNew($newCust);
-
-	header("Location: ListBahan.php");
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>New Bahan</title>
 	<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="../../public/js/postrequestcustomer.js"></script>
+	<script src="../js/ajax/CekID.js"></script>
+	
 </head>
 <body>
 	<div class="container">
 		<br>
-		<h1>New Customer</h1>
+		<h1>New Bahan</h1>
 		<br>
-		<form autocomplete="off" method="post" action="" id="newcustomer">
+		<form autocomplete="off" method="post" action="" id="checkid">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Id</label>
 				<div class="col-sm-3">
@@ -49,6 +27,7 @@ if (isset($_POST['submit'])){
 				<div class='col-sm-3'>
 					<input type="text" name="name" required id="name" class="form-control">
 				</div>
+				<div id = "errorMsg"></div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Quantity</label>

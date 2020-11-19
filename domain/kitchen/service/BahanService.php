@@ -34,5 +34,14 @@ class BahanService {
     $dao->createNew($bahan);
   }
 
+  public function validateCredential($id) {
+
+    $dao = new Dao\BahanDao();
+    $result = $dao->getId($id);
+
+    //true ato false
+    return $result;
+}
+
 }
 ?>
