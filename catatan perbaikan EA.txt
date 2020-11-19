@@ -4,3 +4,7 @@ entity reservation dan customer:
     kamar di reservation harusnya bertipe kamar, bukan string
 
 entity kamar ada kurang id kamar?
+
+entity staff hapus id. PK jadi email
+
+entity customer hapus id, PK jadi nomorIdentitas
