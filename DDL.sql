@@ -1,20 +1,18 @@
 create table staff (
-	id varchar(10),
 	email varchar(25),
 	nama varchar(20),
 	nomor_hp varchar(10),
-	password varchar(10),
+	password varchar(225),
 	pekerjaan varchar(20),
 	status varchar(10),
-	primary key (id));
+	primary key (email));
 
 create table customer (
-	id varchar(16),
 	nama varchar(20),
 	nomorIdentitas varchar(15),
 	nomorKendaraan varchar(10),
 	nomorTelepon varchar(10),
-	primary key (id));
+	primary key (nomorIdentitas));
 
 create table bahan(
 	id varchar(16),
@@ -51,12 +49,11 @@ create table kategoriKamar (
 insert into kategoriKamar values('1','standard'), ('2','deluxe'), ('3','suite'), ('4','president');
 
 create table kamar (
-	id varchar(10),
 	harga int(11),
 	kategori varchar(15),
 	nomor_kamar int(3),
 	status int (1),
-	primary key (id),
+	primary key (nomor_kamar),
 	foreign key (kategori) references kategoriKamar(id)
 );
 
