@@ -60,14 +60,14 @@ create table kamar (
 create table reservation (
 	id varchar(10),
 	bykOrang int(3),
-	kamar varchar(10),
+	kamar int(11),
 	lama int(2),
-	nama varchar(16),
+	nama varchar(15),
 	namaPemesan varchar(20),
 	nomorTelepon varchar(10),
 	status varchar(10),
 	tanggalCheckin date,
 	primary key (id),
-	foreign key (kamar) references kamar(id),
-	foreign key (nama) references customer(id)
+	foreign key (kamar) references kamar(nomor_kamar),
+	foreign key (nama) references customer(nomorIdentitas)
 );
