@@ -16,7 +16,7 @@ class RoomDao {
     public function getUnusedRoom() {
         $conn = Db\DbUtil::getConnection();
 
-        $sql = "select * from kamar inner join kategoriKamar on kamar.id = kategoriKamar.id where kamar.status = 1";
+        $sql = "select * from kamar inner join kategoriKamar on kamar.kategori = kategoriKamar.id where kamar.status = 1";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         $listKamar = array();

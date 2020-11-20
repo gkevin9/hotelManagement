@@ -101,7 +101,7 @@
                                     echo "<tr>";
                                     echo "<td>".$customer->getNama()."</td>";
                                     echo "<td>".$customer->getNomorIdentitas()."</td>";
-                                    echo "<td><input class='form-check-input customer' name='check' type='radio' value='".$customer->getId()."-".$customer->getNama()."'></td>";
+                                    echo "<td><input class='form-check-input customer' name='check' type='radio' value='".$customer->getNomorIdentitas()."-".$customer->getNama()."'></td>";
                                     // echo "<td><button class='btn btn-primary' value='".$customer->getId()."-".$customer->getNama()."'>Choose</button></td>";
                                     echo "</tr>";
                                 }
