@@ -1,7 +1,8 @@
 $( document ).ready(function() {
   
     // SUBMIT FORM
-      $("#checkid").submit(function(event) {
+      $("#checkmenu").submit(function(event) {
+        console.log("aaa");
         // Prevent the form from submitting via the browser.
         event.preventDefault();
         ajaxPost();
@@ -10,17 +11,16 @@ $( document ).ready(function() {
       function ajaxPost(){
         
         // PREPARE FORM DATA
-        var formData = $('#checkid').serialize();
-        console.log('aaa');
+        var formData = $('#checkmenu').serialize();
         // DO POST
         $.ajax({
           type : "POST",
-          url : "../controller/NewBahanController.php",
+          url : "../controller/NewMenuController.php",
           data : formData,
           success : function(param) {
             console.log(param);
             if (param == "failed") {
-              $("#errorMsg").html('<div class="alert alert-danger" role="alert">ID Incorrect</div>'); 
+              $("#name").addClass("is-invalid"); 
             }else {
                 window.location.replace(param);
             }

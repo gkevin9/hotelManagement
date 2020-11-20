@@ -1,39 +1,18 @@
-<?php
-namespace presentation\kitchen\view;
-use domain\kitchen\model as Model;
-use presentation\kitchen\controller as Ctrl;
-
-if (isset($_POST['submit'])){
-	require_once('../controller/MenuController.php');
-	require_once('../../../domain/kitchen/model/NewMenuModel.php');
-	
-	$newMenu = new Model\NewMenuModel();
-	$newMenu->setId($_POST['id']);
-	$newMenu->setNama($_POST['name']);
-	$newMenu->setJenis($_POST['jenis']);
-	$newMenu->setHarga($_POST['harga']);
-
-	$ctrl = new Ctrl\MenuController();
-	$ctrl->createNew($newMenu);
-
-	header("Location: ListMenu.php");
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New Bahan</title>
+	<title>New Menu</title>
 	<link rel="stylesheet" type="text/css" href="../../public/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="../../public/js/postrequestcustomer.js"></script>
+	<script src="../js/ajax/CekMenu.js"></script>
+
 </head>
 <body>
 	<div class="container">
 		<br>
 		<h1>New Menu</h1>
 		<br>
-		<form autocomplete="off" method="post" action="" id="newcustomer">
+		<form autocomplete="off" method="post" action="" id="checkmenu">
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Id</label>
 				<div class="col-sm-3">
@@ -47,6 +26,9 @@ if (isset($_POST['submit'])){
 				<label class="col-sm-2 col-form-label">Name</label>
 				<div class='col-sm-3'>
 					<input type="text" name="name" required id="name" class="form-control">
+					<div class ="invalid-feedback">
+						Menu udh ada
+					</div>
 				</div>
 			</div>
 			<div class="form-group row">

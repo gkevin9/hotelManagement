@@ -21,13 +21,13 @@
 						There is duplicate Id, please enter new id for Ingredients
 					</div>
 				</div>
+				<div id = "errorMsg"></div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Name</label>
 				<div class='col-sm-3'>
 					<input type="text" name="name" required id="name" class="form-control">
 				</div>
-				<div id = "errorMsg"></div>
 			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Quantity</label>

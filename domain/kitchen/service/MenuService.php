@@ -31,5 +31,14 @@ class MenuService {
     $dao = new Dao\MenuDao();
     $dao->createNew($menu);
   }
+
+  public function validateCredential($menu , $id) {
+
+    $dao = new Dao\MenuDao();
+    $result = $dao->getIDMenu($menu,$id);
+
+    //true ato false
+    return $result;
+}
 }
 ?>

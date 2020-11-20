@@ -50,5 +50,32 @@ class MenuDao {
 
         $sql->close();
     }
+
+    public function getIDMenu($menu , $id) {
+ 
+        $conn = DbUtil\DbUtil::getConnection();
+
+        //taro di variable
+        $sql = $conn->prepare("select * from menu where nama = ? or id = ?");
+        $sql->bind_param("ss", $menu , $id);
+        
+        // $sql->execute();
+
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        if (!($res = $sql->get_result())) {
+            echo "Getting result set failed: (" . $sql->errno . ") " . $sql->error;
+        }
+        $count = count($res->fetch_all());
+        $res->close();
+        
+        if ($count > 0) {
+            return False;
+        }else {
+            return True;
+        }
+    }
 }
 ?>
