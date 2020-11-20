@@ -2,7 +2,7 @@
 namespace presentation\humanresource\controller;
 
 $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/service/StaffService.php";
-$tempB = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/model/StaffModel.php";
+$tempB = $_SERVER['DOCUMENT_ROOT']."/domain/humanresource/model/NewStaffModel.php";
 
 require_once($tempA);
 require_once($tempB);
@@ -10,7 +10,6 @@ require_once('../../../domain/humanresource/model/NewStaffModel.php');
 
 use domain\humanresource\service as Service;
 use domain\humanresource\model as Model;
-use domain\humanresource\service\StaffService;
 
     $email = $_POST['email'];
     $ctrl = new NewStaffController();

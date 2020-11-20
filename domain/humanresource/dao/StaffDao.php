@@ -93,9 +93,10 @@ class StaffDao {
         $password = $updateStaff->getPassword();
         $pekerjaan = $updateStaff->getPekerjaan();
         $status = $updateStaff->getStatus();
+        $passwordEncrypt = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = $conn->prepare("update staff set email=?,nama=?,nomor_hp=?,password=?, pekerjaan=?,status=? where id=?");
-        $sql->bind_param("sssssss", $email,$nama,$nomorHp,$password,$pekerjaan,$status,$id);
+        $sql = $conn->prepare("update staff set nama=?,nomor_hp=?,password=?, pekerjaan=?,status=? where email=?");
+        $sql->bind_param("ssssss", $nama,$nomorHp,$passwordEncrypt,$pekerjaan,$status,$email);
 
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
@@ -120,11 +121,31 @@ class StaffDao {
         $count = count($res->fetch_all());
         $res->close();
 
-        if ($count == 1) {//kalo email bener
+        if ($count == 1) {//kalo sudah ada
             return False;
         }else {
             return True;
         }
+    }
+
+    public function getStaffNameByRole($role) {
+        $conn = Db\DbUtil::getConnection();
+
+        $sql = $conn->prepare("select nama,email from staff where pekerjaan=?");
+        $sql->bind_param("s",$role);
+
+        $sql->execute();
+        $data = $sql->get_result();
+
+        $array = array();
+
+        while($row = $data->fetch_assoc()) {
+            $email = $row["email"];
+            $name = $row["nama"];
+            $array[$email] = $name; 
+        }
+
+        return $array;
     }
 }
 

@@ -16,6 +16,7 @@
 				<label class="col-sm-2 col-form-label">Email</label>
 				<div class="col-sm-3">
 					<input type="email" name="email" required id="email" autofocus class="form-control">
+					<div class="invalid-feedback">Email sudah ada</div>
 				</div>
 				
 			</div>
@@ -58,7 +59,7 @@
 				</div>
 			</div>
 
-			<div id="cek_email"></div>
+			
 		</form>
 	</div>
 </body>

@@ -1,7 +1,7 @@
 $( document ).ready(function() {
   
     // SUBMIT FORM
-      $("#newstaff").submit(function(event) {
+      $("#newschedule").submit(function(event) {
         // Prevent the form from submitting via the browser.
         console.log('aaa');
         event.preventDefault();
@@ -11,19 +11,19 @@ $( document ).ready(function() {
       function ajaxPost(){
         
         // PREPARE FORM DATA
-        var formData = $('#newstaff').serialize();
+        var formData = $('#newschedule').serialize();
         console.log('bbbb');
         // DO POST
         $.ajax({
           type : "POST",
-          url : "../controller/NewStaffController.php",
+          url : "../controller/NewScheduleController.php",
           data : formData,
           success : function(param) {
             if (param == "failed") {
-              $("#email").addClass("is-invalid");
+              $("#cek_schedule").html('<div class="alert alert-danger" role="alert">Jadwal sudah ada</div>'); 
             }else {
-                // console.log(param);
-                window.location.replace(param);
+                console.log(param);
+                // window.location.replace(param);
             }
           },
           error : function(e) {

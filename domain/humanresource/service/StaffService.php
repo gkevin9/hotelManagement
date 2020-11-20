@@ -49,7 +49,6 @@ class StaffService {
 
     public function createNew(Model\NewStaffModel $staffModel) {
         $staff = new Entity\Staff();
-        $staff->setId($staffModel->getId());
         $staff->setEmail($staffModel->getEmail());
         $staff->setNama($staffModel->getNama());
         $staff->setNomorHp($staffModel->getNomorHp());
@@ -63,7 +62,6 @@ class StaffService {
 
     public function updateStaff(Model\NewStaffModel $updateStaffModel){
         $staff = new Entity\Staff();
-        $staff->setId($updateStaffModel->getId());
         $staff->setEmail($updateStaffModel->getEmail());
         $staff->setNama($updateStaffModel->getNama());
         $staff->setNomorHp($updateStaffModel->getNomorHp());
@@ -79,6 +77,12 @@ class StaffService {
         $dao = new Dao\StaffDao();
         $isValid = $dao->validateEmail($email);
         return $isValid;
+    }
+
+    public function getNameByRole($role) {
+        $dao = new Dao\StaffDao();
+        $data = $dao->getStaffNameByRole($role);
+        return $data;
     }
 }
 ?>

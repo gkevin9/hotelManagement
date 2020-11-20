@@ -39,15 +39,9 @@
 		<br>
 		<form autocomplete="off" method="post" action="" id="newcustomer">
             <div class="form-group row">
-				<label class="col-sm-2 col-form-label">ID</label>
-				<div class='col-sm-3'>
-					<input type="text" name="id" required id="id" class="form-control" readonly="readonly" value="<?php echo $staff->getId()?>">
-				</div>
-            </div>
-            <div class="form-group row">
 				<label class="col-sm-2 col-form-label">Email</label>
 				<div class="col-sm-3">
-					<input type="email" name="email" required id="email" autofocus class="form-control" value="<?php echo $staff->getEmail()?>">
+					<input type="email" name="email" required id="email" readonly="readonly" autofocus class="form-control" value="<?php echo $staff->getEmail()?>">
 				</div>
 			</div>
             <div class="form-group row">

@@ -1,5 +1,5 @@
 create table staff (
-	email varchar(25),
+	email varchar(50),
 	nama varchar(20),
 	nomor_hp varchar(10),
 	password varchar(225),
@@ -70,4 +70,15 @@ create table reservation (
 	primary key (id),
 	foreign key (kamar) references kamar(nomor_kamar),
 	foreign key (nama) references customer(nomorIdentitas)
+);
+
+create table schedule (
+	id not null auto_increment,
+	hari int,
+	jam_awal TIME,
+	jam_akhir TIME,
+	lokasi varchar(10),
+	staff varchar(50),
+	primary key(id),
+	foreign key(staff) references staff(email)
 );

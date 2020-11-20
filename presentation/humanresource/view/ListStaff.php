@@ -11,12 +11,16 @@
 		  	</button>
 		  	<div class="collapse navbar-collapse" id="navbarNav">
 		    	<ul class="navbar-nav">
+					<li class="nav-item  active">
+		        		<a class="nav-link" href="ListStaff.php">Staff<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+		        		<a class="nav-link" href="../../task/view/ListSchedule.php">Schedule</a>
+		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="ListReservation.php">Task</a>
+		        		<a class="nav-link" href="../../task/view/ListTask.php">Task</a>
 		      		</li>
-		      		<li class="nav-item  active">
-		        		<a class="nav-link" href="">Staff<span class="sr-only">(current)</span></a>
-		      		</li>
+					  
 		    	</ul>
 		  	</div>
 		</nav>
