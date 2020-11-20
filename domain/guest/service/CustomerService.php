@@ -35,7 +35,7 @@ class CustomerService {
   public function getSelectedCustomer($ktp) {
     $dao = new Dao\CustomerDao();
     $result = $dao->getSelectedCustomer($ktp);
-
+  
     return $result;
   }
 
@@ -48,6 +48,16 @@ class CustomerService {
 
     $dao = new Dao\CustomerDao();
     $dao->update($customer);
+  }
+
+  public function isKtpDuplicate($ktp) {
+    $cust = $this->getSelectedCustomer($ktp);
+    
+    if (is_null($cust->getNama())) {
+      return False;
+    }else {
+      return True;
+    }
   }
 }
 ?>
