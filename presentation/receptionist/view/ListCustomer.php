@@ -33,7 +33,6 @@
 			<table class="table table-hover">
 				<thead class="thead-dark">
 					<tr>
-						<th scope="col">Id</th>
 						<th scope="col">Name</th>
 						<th scope="col">KTP</th>
 						<th scope="col">Vehicle Num</th>
@@ -53,12 +52,11 @@
 
 					foreach ($list as $cust) {
 						echo "<tr>";
-						echo "<td>".$cust->getId()."</td>";
 						echo "<td>".$cust->getNama()."</td>";
 						echo "<td>".$cust->getNomorIdentitas()."</td>";
 						echo "<td>".$cust->getNomorKendaraan()."</td>";
 						echo "<td>".$cust->getNomorTelepon()."</td>";
-						echo "<td><a href='EditCustomer.php?id=".$cust->getId()."'><button class='btn btn-warning'>Edit</button></a></td>";
+						echo "<td><a href='EditCustomer.php?id=".$cust->getNomorIdentitas()."'><button class='btn btn-warning'>Edit</button></a></td>";
 						echo "</tr>";
 					}
 					?>

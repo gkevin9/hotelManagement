@@ -7,10 +7,8 @@ if (isset($_POST['submit'])){
 	require_once('../controller/CustomerController.php');
 	require_once('../../../domain/guest/model/NewCustomerModel.php');
 	
-	$id = $_POST['nama'][0].$_POST['nomorIdentitas'];
-	
 	$newCust = new Model\NewCustomerModel();
-	$newCust->setId($id);
+	
 	$newCust->setNama($_POST['nama']);
 	$newCust->setNomorIdentitas($_POST['nomorIdentitas']);
 	$newCust->setNomorKendaraan($_POST['nomorKendaraan']);

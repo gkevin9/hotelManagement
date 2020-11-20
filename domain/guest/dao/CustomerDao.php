@@ -21,7 +21,6 @@ class CustomerDao {
 
         while ($row = mysqli_fetch_array($result)) {
             $customer = new Entity\Customer();
-            $customer->setId( $row['id'] );
             $customer->setNama( $row['nama'] );
             $customer->setNomorIdentitas( $row['nomorIdentitas'] );
             $customer->setNomorKendaraan( $row['nomorKendaraan'] );
@@ -37,14 +36,13 @@ class CustomerDao {
         $conn = Db\DbUtil::getConnection();
 
         //prepare
-        $id = $newCustomer->getId();
         $nama = $newCustomer->getNama();
         $nomorIdentitas = $newCustomer->getNomorIdentitas();
         $nomorKendaraan = $newCustomer->getNomorKendaraan();
         $nomorTelepon = $newCustomer->getNomorTelepon();
 
-        $sql = $conn->prepare("insert into customer values(?, ?, ?, ?, ?)");
-        $sql->bind_param("sssss", $id, $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon);
+        $sql = $conn->prepare("insert into customer values(?, ?, ?, ?)");
+        $sql->bind_param("ssss", $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon);
         
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
@@ -53,11 +51,11 @@ class CustomerDao {
         $sql->close();
     }
 
-    public function getSelectedCustomer($customerId) {
+    public function getSelectedCustomer($ktp) {
         $conn = Db\DbUtil::getConnection();
         
-        $sql = $conn->prepare("select * from customer where id = ?");
-        $sql->bind_param("s", $customerId);
+        $sql = $conn->prepare("select * from customer where nomorIdentitas = ?");
+        $sql->bind_param("s", $ktp);
         
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
@@ -69,7 +67,6 @@ class CustomerDao {
         
         $tempCustomer = $res->fetch_assoc();
         $customer = new Entity\Customer();
-        $customer->setId($customerId);
         $customer->setNama($tempCustomer['nama']);
         $customer->setNomorIdentitas($tempCustomer['nomorIdentitas']);
         $customer->setNomorKendaraan($tempCustomer['nomorKendaraan']);
@@ -82,15 +79,14 @@ class CustomerDao {
         $conn = Db\DbUtil::getConnection();
 
         //prepare
-        echo var_dump($customer);
-        $id = $customer->getId();
+        // echo var_dump($customer);
         $nama = $customer->getNama();
         $nomorIdentitas = $customer->getNomorIdentitas();
         $nomorKendaraan = $customer->getNomorKendaraan();
         $nomorTelepon = $customer->getNomorTelepon();
 
-        $sql = $conn->prepare("update customer set nama= ?, nomorIdentitas = ?, nomorKendaraan = ?, nomorTelepon = ? where id = ?");
-        $sql->bind_param("sssss", $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon, $id);
+        $sql = $conn->prepare("update customer set nama= ?, nomorKendaraan = ?, nomorTelepon = ? where nomorIdentitas = ?");
+        $sql->bind_param("ssss", $nama, $nomorKendaraan, $nomorTelepon, $nomorIdentitas);
         
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));

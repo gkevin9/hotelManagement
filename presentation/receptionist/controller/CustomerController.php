@@ -23,9 +23,9 @@ class CustomerController {
         $service->createNew($newCustomer);
     }
 
-    public function getSelected($customerId) {
+    public function getSelected($ktp) {
         $service = new Service\CustomerService();
-        $result = $service->getSelectedCustomer($customerId);
+        $result = $service->getSelectedCustomer($ktp);
 
         return $result;
     }

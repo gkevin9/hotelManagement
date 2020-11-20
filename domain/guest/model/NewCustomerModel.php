@@ -2,19 +2,10 @@
 namespace domain\guest\model;
 
 class NewCustomerModel {
-    private $id;
     private $nama;
     private $nomorIdentitas;
     private $nomorKendaraan;
     private $nomorTelepon;
-
-    public function setId($id) {
-        $this->id=$id;
-    }
-
-    public function getId() {
-        return $this->id;
-    }
 
     public function setNama($nama) {
         $this->nama=$nama;

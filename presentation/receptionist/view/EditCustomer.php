@@ -7,11 +7,10 @@ use presentation\receptionist\controller as Ctrl;
 if (isset($_POST['submit'])){
 	require_once('../controller/CustomerController.php');
 	require_once('../../../domain/guest/model/NewCustomerModel.php');
-	
+	require_once('../../../showErr.php');
 	$newCust = new Model\NewCustomerModel();
-	$newCust->setId($_GET['id']);
 	$newCust->setNama($_POST['nama']);
-	$newCust->setNomorIdentitas($_POST['nomorIdentitas']);
+	$newCust->setNomorIdentitas($_GET['id']);
 	$newCust->setNomorKendaraan($_POST['nomorKendaraan']);
 	$newCust->setNomorTelepon($_POST['nomorTelepon']);
 
@@ -40,12 +39,6 @@ $custData = $ctrl->getSelected($_GET['id']);
 		<h1>Edit Customer</h1>
 		<br>
 		<form autocomplete="off" method="post" action="" id="newcustomer">
-            <div class="form-group row">
-				<label class="col-sm-2 col-form-label">Id</label>
-				<div class="col-sm-3">
-					<input type="text" name="id" disabled class="form-control" value="<?php echo $custData->getId(); ?>">
-				</div>
-			</div>
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Name</label>
 				<div class="col-sm-3">
@@ -55,7 +48,7 @@ $custData = $ctrl->getSelected($_GET['id']);
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">KTP</label>
 				<div class='col-sm-3'>
-					<input type="text" name="nomorIdentitas" required id="nomorIdentitas" class="form-control" value="<?php echo $custData->getNomorIdentitas(); ?>">
+					<input type="text" name="nomorIdentitas" required id="nomorIdentitas" class="form-control" value="<?php echo $custData->getNomorIdentitas(); ?>" disabled>
 					<div class='invalid-feedback'>
 						There is duplicate KTP, please check again
 					</div>

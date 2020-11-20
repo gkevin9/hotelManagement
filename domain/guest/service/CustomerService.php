@@ -23,7 +23,6 @@ class CustomerService {
 
   public function createNew(Model\NewCustomerModel $custModel) {
     $customer = new Entity\Customer();
-    $customer->setId($custModel->getId());
     $customer->setNama($custModel->getNama());
     $customer->setNomorIdentitas($custModel->getNomorIdentitas());
     $customer->setNomorKendaraan($custModel->getNomorKendaraan());
@@ -33,16 +32,15 @@ class CustomerService {
     $dao->createNew($customer);
   }
 
-  public function getSelectedCustomer($customerId) {
+  public function getSelectedCustomer($ktp) {
     $dao = new Dao\CustomerDao();
-    $result = $dao->getSelectedCustomer($customerId);
+    $result = $dao->getSelectedCustomer($ktp);
 
     return $result;
   }
 
   public function update(Model\NewCustomerModel $custModel) {
     $customer = new Entity\Customer();
-    $customer->setId($custModel->getId());
     $customer->setNama($custModel->getNama());
     $customer->setNomorIdentitas($custModel->getNomorIdentitas());
     $customer->setNomorKendaraan($custModel->getNomorKendaraan());
