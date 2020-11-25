@@ -31,7 +31,7 @@
 		</nav>
 		<div class="container-fluid">
 			<br>
-				<a href="NewReservation.php" class="btn btn-primary">+ New Reservation</a>
+				<a href="ChooseRoom.php" class="btn btn-primary">+ New Reservation</a>
 			<br><br>
 			<table class="table table-hover">
 				<thead class="thead-dark">

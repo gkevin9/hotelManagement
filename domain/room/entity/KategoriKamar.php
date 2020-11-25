@@ -1,6 +1,7 @@
 <?php
 namespace domain\room\entity;
-class KategoriKamar{
+use JsonSerializable;
+class KategoriKamar implements JsonSerializable{
         private $id;
         private $nama;
 
@@ -19,6 +20,13 @@ class KategoriKamar{
 
         public function setNama($nama) {
                 $this->nama = $nama;
+        }
+
+        public function jsonSerialize() {
+                return [
+                        'id' => $this->getId(),
+                        'nama' => $this->getNama()
+                ];
         }
 }
 ?>

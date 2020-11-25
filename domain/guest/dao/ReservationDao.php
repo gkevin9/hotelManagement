@@ -25,7 +25,6 @@ class ReservationDao {
             $reservation->setBykOrang( $row['bykOrang'] );
             $reservation->setIdKamar( $row['idKamar'] );
             $reservation->setLama( $row['lama'] );
-            $reservation->setIdCust( $row['lama'] );
             $reservation->setNamaPemesan( $row['namaPemesan'] );
             $reservation->setNomorTelepon( $row['nomorTelepon'] );
             $reservation->setStatus( $row['status'] );
@@ -41,14 +40,13 @@ class ReservationDao {
         $conn = Db\DbUtil::getConnection();
 
         //prepare
-        $id = $newCustomer->getId();
         $nama = $newCustomer->getNama();
         $nomorIdentitas = $newCustomer->getNomorIdentitas();
         $nomorKendaraan = $newCustomer->getNomorKendaraan();
         $nomorTelepon = $newCustomer->getNomorTelepon();
 
-        $sql = $conn->prepare("insert into customer values(?, ?, ?, ?, ?)");
-        $sql->bind_param("sssss", $id, $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon);
+        $sql = $conn->prepare("insert into customer values(?, ?, ?, ?)");
+        $sql->bind_param("ssss", $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon);
         
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
