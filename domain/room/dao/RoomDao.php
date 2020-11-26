@@ -13,17 +13,18 @@ use domain\support\db as Db;
 use domain\room\entity as Entity;
 
 class RoomDao {
-    public function getUnusedRoom() {
+    public function getRooms() {
         $conn = Db\DbUtil::getConnection();
 
-        $sql = "select * from kamar inner join kategoriKamar on kamar.kategori = kategoriKamar.id where kamar.status = 1";
+        $sql = "select * from kamar inner join kategoriKamar on kamar.kategori = kategoriKamar.id";
         $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
         $listKamar = array();
         
         while ($row = mysqli_fetch_array($result)) {
+            // echo var_dump($row);
             $kategori = new Entity\KategoriKamar();
-            $kategori->setId($row[5]);
+            $kategori->setId($row[1]);
             $kategori->setNama($row['nama']);
             
             $kamar = new Entity\Kamar();
@@ -31,6 +32,7 @@ class RoomDao {
             $kamar->setKategori($kategori);
             $kamar->setNoKamar($row['nomor_kamar']);
             $kamar->setStatus($row['status']);
+            $kamar->setJmlhOrg($row['jumlah_orang']);
             
             array_push($listKamar, $kamar);
         }

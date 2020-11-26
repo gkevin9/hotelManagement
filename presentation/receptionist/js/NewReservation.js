@@ -15,4 +15,5 @@ $(document).ready(function() {
         $('#kamar').val(name);
         $('#roomModal').modal('hide');
     })
+
 })

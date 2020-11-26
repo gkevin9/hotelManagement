@@ -50,12 +50,17 @@ insert into kategoriKamar values('1','standard'), ('2','deluxe'), ('3','suite'),
 
 create table kamar (
 	harga int(11),
-	kategori varchar(15),
+	kategori varchar(1),
 	nomor_kamar int(3),
+	jumlah_orang int(1),
 	status int (1),
 	primary key (nomor_kamar),
 	foreign key (kategori) references kategoriKamar(id)
 );
+
+insert into kamar values(1000000, '1', 101, 2, 0);
+insert into kamar values(1500000, '2', 102, 4, 0);
+insert into kamar values(1500000, '3', 103, 2, 0);
 
 create table reservation (
 	id varchar(10),

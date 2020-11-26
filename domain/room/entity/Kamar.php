@@ -1,6 +1,7 @@
 <?php
 namespace domain\room\entity;
-Class Kamar{
+use JsonSerializable;
+Class Kamar implements JsonSerializable{
         private $harga;
         private $jmlh_org;
         private $kategori;
@@ -11,7 +12,7 @@ Class Kamar{
          * Get the value of harga
          */
         public function getHarga() {
-                return $this->harga;
+        return $this->harga;
         }
 
         /**
@@ -20,14 +21,14 @@ Class Kamar{
          * @return  self
          */
         public function setHarga($harga) {
-                $this->harga = $harga;
+        $this->harga = $harga;
         }
 
         /**
          * Get the value of jmlh_org
          */
         public function getJmlhOrg() {
-                return $this->jmlh_org;
+        return $this->jmlh_org;
         }
 
         /**
@@ -36,14 +37,14 @@ Class Kamar{
          * @return  self
          */
         public function setJmlhOrg($jmlh_org) {
-                $this->jmlh_org = $jmlh_org;
+        $this->jmlh_org = $jmlh_org;
         }
 
         /**
          * Get the value of kategori
          */
         public function getKategori() {
-                return $this->kategori;
+        return $this->kategori;
         }
 
         /**
@@ -52,14 +53,14 @@ Class Kamar{
          * @return  self
          */
         public function setKategori($kategori) {
-                $this->kategori = $kategori;
+        $this->kategori = $kategori;
         }
 
         /**
          * Get the value of no_kamar
          */
         public function getNoKamar() {
-                return $this->no_kamar;
+        return $this->no_kamar;
         }
 
         /**
@@ -68,7 +69,7 @@ Class Kamar{
          * @return  self
          */
         public function setNoKamar($no_kamar) {
-                $this->no_kamar = $no_kamar;
+        $this->no_kamar = $no_kamar;
 
         }
 
@@ -76,7 +77,7 @@ Class Kamar{
          * Get the value of status
          */
         public function getStatus() {
-                return $this->status;
+        return $this->status;
         }
 
         /**
@@ -85,8 +86,20 @@ Class Kamar{
          * @return  self
          */
         public function setStatus($status) {
-                $this->status = $status;
+        $this->status = $status;
 
+        }
+
+        public function jsonSerialize()
+        {
+                return 
+                [
+                        'no_kamar' => $this->getNoKamar(),
+                        'harga' => $this->getHarga(),
+                        'jmlh_org' => $this->getJmlhOrg(),
+                        'kategor' => $this->getKategori(),
+                        'status' => $this->getStatus()
+                ];
         }
 }
 ?>

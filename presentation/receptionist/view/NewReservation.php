@@ -1,14 +1,20 @@
 <html>
 	<head>
 		<title>New Reservation</title>
-		<link href="../../public/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="../../public/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="../css/NewReservation.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../../public/js/bootstrap.min.js"></script>
-        <script src="../../public/js/ChooseCustomerRoom.js"></script>
-		
+        <script src="../js/NewReservation.js"></script>
 	</head>
 	<body>
 		<div class="container">
+        <ul class="progressbar">
+            <li class="active">Input Customer Data</li>
+            <li>choose interest</li>
+            <li>add friends</li>
+            <li>View map</li>
+        </ul>
 			<br>
 			<h1>New Reservation</h1>
 			<br>
@@ -32,7 +38,7 @@
                 <div class="form-group row">
 					<label class="col-sm-2 col-form-label">Check In Date</label>
 					<div class="col-sm-3">
-                        <input type="date" name="tanggalCheckin" class="form-control" required>
+                        <input type="date" name="tanggalCheckin" id="checkin" class="form-control" required value="<?php echo date('Y-m-d'); ?>">
                     </div>
 				</div>
 				<div class="form-group row">
