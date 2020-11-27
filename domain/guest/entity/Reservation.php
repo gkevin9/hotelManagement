@@ -2,96 +2,86 @@
 namespace domain\guest\entity;
 
 Class Reservation{
-        private $id;
-        private $bykOrang;
-        private $kamar;
-        private $lama;
-        private $nama;
-        private $namaPemesan;
-        private $nomorTelepon;
-        private $status;
-        private $tanggalCheckIn;
-        private $customer;
-        private $idKamar;
+  private $id;
+  private $bykOrang;
+  private $kamar;
+  private $lama;
+  private $nama;
+  private $namaPemesan;
+  private $nomorTelepon;
+  private $status;
+  private $tanggalCheckIn;
 
-        public function setId($id) {
-          $this->id = $id;
-        }
+  public function setId($id) {
+    $this->id = $id;
+  }
 
-        public function getId() {
-          return $this->id;
-        }
+  public function getId() {
+    return $this->id;
+  }
 
-        public function setBykOrang($bykOrang) {
-          $this->bykOrang = $bykOrang;
-        }
+  public function setBykOrang($bykOrang) {
+    $this->bykOrang = $bykOrang;
+  }
 
-        public function getBykOrang() {
-          return $this->bykOrang;
-        }
+  public function getBykOrang() {
+    return $this->bykOrang;
+  }
 
-        public function setIdKamar($kamar) {
-          $this->kamar = $kamar;
-        }
+  public function setKamar($kamar) {
+    $this->kamar = $kamar;
+  }
 
-        public function getIdKamar() {
-          return $this->kamar;
-        }
+  public function getKamar() {
+    return $this->kamar;
+  }
 
-        public function setLama($lama) {
-          $this->lama = $lama;
-        }
+  public function setLama($lama) {
+    $this->lama = $lama;
+  }
 
-        public function getLama() {
-          return $this->lama;
-        }
+  public function getLama() {
+    return $this->lama;
+  }
 
-        public function setNama($nama) {
-          $this->nama= $nama;
-        }
+  public function setNama($nama) {
+    $this->nama= $nama;
+  }
 
-        public function getNama() {
-          return $this->nama;
-        }
+  public function getNama() {
+    return $this->nama;
+  }
 
-        public function setNamaPemesan($namaPemesan) {
-          $this->namaPemesan=$namaPemesan;
-        }
+  public function setNamaPemesan($namaPemesan) {
+    $this->namaPemesan=$namaPemesan;
+  }
 
-        public function getNamaPemesan() {
-          return $this->namaPemesan;
-        }
+  public function getNamaPemesan() {
+    return $this->namaPemesan;
+  }
 
-        public function setNomorTelepon($nomorTelepon) {
-          $this->nomorTelepon=$nomorTelepon;
-        }
+  public function setNomorTelepon($nomorTelepon) {
+    $this->nomorTelepon=$nomorTelepon;
+  }
 
-        public function getNomorTelepon() {
-          return $this->nomorTelepon;
-        }
+  public function getNomorTelepon() {
+    return $this->nomorTelepon;
+  }
 
-        public function setStatus($status) {
-          $this->status=$status;
-        }
+  public function setStatus($status) {
+    $this->status=$status;
+  }
 
-        public function getStatus() {
-          return $this->status;
-        }
+  public function getStatus() {
+    return $this->status;
+  }
 
-        public function setTanggalCheckIn($tanggalCheckIn) {
-          $this->tanggalCheckIn=$tanggalCheckIn;
-        }
+  public function setTanggalCheckIn($tanggalCheckIn) {
+    $this->tanggalCheckIn=$tanggalCheckIn;
+  }
 
-        public function getTanggalCheckIn() {
-          return $this->tanggalCheckIn;
-        }
-
-        public function setCustomer($customer) {
-          $this->customer=$customer;
-        }
-
-        public function getCustomer() {
-          return $this->customer;
-        }
+  public function getTanggalCheckIn() {
+    return $this->tanggalCheckIn;
+  }
 }
 ?>

@@ -23,7 +23,7 @@ class ReservationDao {
             $reservation = new Entity\Reservation();
             $reservation->setId( $row['id'] );
             $reservation->setBykOrang( $row['bykOrang'] );
-            $reservation->setIdKamar( $row['idKamar'] );
+            $reservation->setKamar( $row['idKamar'] );
             $reservation->setLama( $row['lama'] );
             $reservation->setNamaPemesan( $row['namaPemesan'] );
             $reservation->setNomorTelepon( $row['nomorTelepon'] );
@@ -36,17 +36,30 @@ class ReservationDao {
         return $listReservation;
     }
 
-    public function createNew(Entity\Customer $newCustomer) {
+    public function createNew(Entity\Reservation $newReservation) {
         $conn = Db\DbUtil::getConnection();
 
         //prepare
-        $nama = $newCustomer->getNama();
-        $nomorIdentitas = $newCustomer->getNomorIdentitas();
-        $nomorKendaraan = $newCustomer->getNomorKendaraan();
-        $nomorTelepon = $newCustomer->getNomorTelepon();
+        $bykOrang = $newReservation->getBykOrang();
+        $kamar = $newReservation->getKamar();
+        $lama = $newReservation->getLama();
+        $namaPemesan = $newReservation->getNamaPemesan();
+        $nama = $newReservation->getNama();
+        $nomorTelepon = $newReservation->getNomorTelepon();
+        $status = 'ACTIVE';
+        $tglCheckin = $newReservation->getTanggalCheckIn();
 
-        $sql = $conn->prepare("insert into customer values(?, ?, ?, ?)");
-        $sql->bind_param("ssss", $nama, $nomorIdentitas, $nomorKendaraan, $nomorTelepon);
+        $sql = $conn->prepare("insert into reservation(
+            bykOrang, 
+            kamar, 
+            lama, 
+            nama, 
+            namaPemesan, 
+            nomorTelepon, 
+            status, 
+            tanggalcheckin) 
+            values(?, ?, ?, ?, ?, ?, ?, ?)");
+        $sql->bind_param("iiisssss", $bykOrang, $kamar, $lama, $nama, $namaPemesan, $nomorTelepon, $status, $tglCheckin);
         
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));

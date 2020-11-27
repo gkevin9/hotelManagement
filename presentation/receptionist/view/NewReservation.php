@@ -9,72 +9,61 @@
 	</head>
 	<body>
 		<div class="container">
-        <ul class="progressbar">
-            <li class="active">Input Customer Data</li>
-            <li>choose interest</li>
-            <li>add friends</li>
-            <li>View map</li>
-        </ul>
+            <?php
+            $datediff = abs(strtotime($_GET['checkin']) - strtotime($_GET['checkout']));
+            $lengthOfStay = round($datediff / (60 * 60 * 24));
+            ?>
 			<br>
-			<h1>New Reservation</h1>
-			<br>
-			<form autocomplete="off">
-				<div class="form-group row">
-				    <label class="col-sm-2 col-form-label">Customer</label>
-				    <div class="col-sm-3">
-                        <input type="text" class="form-control" name="custName" required disabled id='name'>
-                        <input type="hidden" id="hidden-id" name="id">
-					</div>
-					<div class="col-sm-4">
+			<h1>Input Customer Info</h1>
+            <br>
+            <form autocomplete="off" method="post" id="newcustomer">
+                <input type="hidden" name="checkin" value="<?php echo $_GET['checkin'] ?>">
+                <input type="hidden" name="lama" value="<?php echo $lengthOfStay?>">
+                <input type="hidden" name="person" value="<?php echo $_GET['person']?>">
+                <input type="hidden" name="newdata" id="newdata" value="true">
+                <input type="hidden" name="room" value="<?php echo $_GET['room']; ?>">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="nama" required id="nama" autofocus class="form-control">
+                    </div>
+                    or
+                    <div class="col-sm-4">
 						<button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#custModal">Choose Customer</button>
-					</div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Person Quantity</label>
-					<div class="col-sm-3">
-						<input type="number" name="bykOrang" required class="form-control" value="1">
+                        <button style="display: none;" class="btn btn-danger" name='submit' id="resetBtn">Reset</button>
 					</div>
                 </div>
                 <div class="form-group row">
-					<label class="col-sm-2 col-form-label">Check In Date</label>
-					<div class="col-sm-3">
-                        <input type="date" name="tanggalCheckin" id="checkin" class="form-control" required value="<?php echo date('Y-m-d'); ?>">
+                    <label class="col-sm-2 col-form-label">KTP</label>
+                    <div class='col-sm-3'>
+                        <input type="text" name="nomorIdentitas" required id="nomorIdentitas" class="form-control" maxlength="15">
+                        <div class='invalid-feedback'>
+                            There is duplicate KTP, please check again
+                        </div>
                     </div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Room</label>
-					<div class="col-sm-3">
-						<input type="text" name="kamar" id="kamar" class="form-control" disabled>
-					</div>
-					<div class="col-sm-4">
-                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#roomModal">Choose Room</button>
-					</div>
-				</div>
-				<div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Length of Stay</label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Vehicle Number</label>
                     <div class="col-sm-3">
-                        <input type="number" name="lama" class="form-control" value="1" required>
+                        <input type="text" name="nomorKendaraan" required value="-" id="nomorKendaraan" class='form-control'>
                     </div>
-				</div>
-				<div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Order Name</label>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Phone Number</label>
                     <div class="col-sm-3">
-                        <input type="text" name="namaPemesan" class="form-control" required>
+                        <input type="text" name="nomorTelepon" required id="nomorTelepon" class="form-control">
                     </div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Phone Number</label>
-					<div class="col-sm-3">
-                        <input type="text" name="nomorTelepon" class="form-control" required>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-1">
+                        <button class="btn btn-primary mb-2" name='submit'>Submit</button>
                     </div>
-				</div>
-				<div class="form-group row">
-					<label class="col-sm-2 col-form-label"></label>
-					<div class="col-sm-3">
-                        <button class="btn btn-primary mb-2">Submit</button>
+                    <div class="col-sm-1">
+                        <a href="ChooseRoom.php" class="btn btn-danger">Cancle</a>
                     </div>
-				</div>
-			</form>
+                </div>
+            </form>
 		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="custModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -107,8 +96,8 @@
                                     echo "<tr>";
                                     echo "<td>".$customer->getNama()."</td>";
                                     echo "<td>".$customer->getNomorIdentitas()."</td>";
-                                    echo "<td><input class='form-check-input customer' name='check' type='radio' value='".$customer->getNomorIdentitas()."-".$customer->getNama()."'></td>";
-                                    // echo "<td><button class='btn btn-primary' value='".$customer->getId()."-".$customer->getNama()."'>Choose</button></td>";
+                                    echo "<td><input class='form-check-input customer' name='check' type='radio'"; 
+                                    echo "value='".$customer->getNomorIdentitas()."=".$customer->getNama()."=".$customer->getNomorTelepon()."=".$customer->getNomorKendaraan()."'></td>";
                                     echo "</tr>";
                                 }
                                 ?>
@@ -121,8 +110,5 @@
                 </div>
             </div>
 		</div>
-        <?php
-        include 'modal/RoomModal.php';
-        ?>
 	</body>
 </html>

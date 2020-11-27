@@ -28,7 +28,7 @@ class CustomerDao {
             
             array_push($listCustomer, $customer);
         }
-
+        
         return $listCustomer;
     }
 
