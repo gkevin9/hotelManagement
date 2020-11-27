@@ -63,7 +63,7 @@ insert into kamar values(1500000, '2', 102, 4, 0);
 insert into kamar values(1500000, '3', 103, 2, 0);
 
 create table reservation (
-	id varchar(10),
+	id int auto_increment,
 	bykOrang int(3),
 	kamar int(11),
 	lama int(2),
