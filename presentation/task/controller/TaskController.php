@@ -1,38 +1,24 @@
-<?php 
+<?php
 namespace presentation\task\controller;
 
 $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/task/service/TaskService.php";
-$tempB = $_SERVER['DOCUMENT_ROOT']."/domain/task/model/NewTaskModel.php";
 
 require_once($tempA);
-require_once($tempB);
-require_once('../../../domain/task/model/NewTaskModel.php');
+
 use domain\task\service as Service;
-use domain\task\model as Model;
-    
-if(isset($_POST["submit"])){
-    $staff = $_POST["staff"];
-    $keterangan = $_POST["keterangan"];
-    $status = "Active";
-    date_default_timezone_set('Asia/Jakarta');
-    $tanggal = date('Y-m-d H:i:s', time());
-    $newtask = new Model\NewTaskModel();
-    $newtask->setKeterangan($keterangan);
-    $newtask->setStaff($staff);
-    $newtask->setStatus($status);
-    $newtask->setTanggal($tanggal);
 
-    $ctrl = new NewTaskController();
-    $ctrl->newTask($newtask);
+    $role = $_POST['Role'];
+    $ctrl = new StaffTaskController();
+    $data = $ctrl->getAllTaskByRole($role);
+    print json_encode($data);
 
-    header("Location: ../view/ListSchedule.php");
-    exit();
-}
+class StaffTaskController {
 
-class NewTaskController {
-    public function newTask($newtask) {
+    public function getAllTaskByRole($role) {
         $service = new Service\TaskService();
-        $service->insertTask($newtask);
+        $data = $service->getTaskByRole($role);
+        return $data;
     }
 }
+
 ?>

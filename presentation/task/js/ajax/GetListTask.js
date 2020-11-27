@@ -10,12 +10,12 @@ $( document ).ready(function() {
       function fetchRecordsfromDB(role) {
         $.ajax( {
           type : "POST",
-          url : "../controller/StaffTaskController.php",
+          url : "../controller/TaskController.php",
           data : {Role:role},
           success : function(param) {
             var count = param.length;
             var nama = "";
-            $("#jadwal").empty();
+            $("#task").empty();
             $("#namaStaff").empty();
             console.log(param);
             if (count>3) {
@@ -26,7 +26,7 @@ $( document ).ready(function() {
                       str+=("<td>"+value_data+"</td>");
                   });
                   str+=("</tr>");
-                  $("#jadwal").append(str);
+                  $("#task").append(str);
                 });
 
                 $("#namaStaff").append("Penugasan untuk staff "+role+" yang sudah ada");

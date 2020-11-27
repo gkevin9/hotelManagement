@@ -4,10 +4,8 @@ namespace presentation\task\controller;
 $tempA = $_SERVER['DOCUMENT_ROOT']."/domain/task/service/ScheduleService.php";
 
 require_once($tempA);
-require_once($tempB);
 
 use domain\task\service as Service;
-use domain\task\model as Model;
 
 $role = $_POST["role"];
 $day = $_POST["day"];

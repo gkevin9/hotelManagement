@@ -74,7 +74,7 @@
             </div>
         
         </form>
-        <form autocomplete="off" method="post" action="../controller/TaskController.php" id="newtask">
+        <form autocomplete="off" method="post" action="../controller/NewTaskController.php" id="newtask">
             <div class="form-group row">
 				<label class="col-sm-2 col-form-label">Staff yang tersedia</label>
 				<div class="col-sm-3">
@@ -107,7 +107,7 @@
                     <th scope="col">Status</th>
                     </tr>
                 </thead>
-                <tbody id="jadwal">
+                <tbody id="task">
                 </tbody>
         </table>
 	</div>
