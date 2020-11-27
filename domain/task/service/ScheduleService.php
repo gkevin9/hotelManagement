@@ -55,6 +55,12 @@ class ScheduleService {
 
         return $data;
     }
+
+    public function getScheduleStaff($role,$location,$day,$jam) {
+        $dao = new Dao\ScheduleDao();
+        $data = $dao->getScheduleStaff($role,$location,$day,$jam);
+        return $data;
+    }
     
 }
 ?>

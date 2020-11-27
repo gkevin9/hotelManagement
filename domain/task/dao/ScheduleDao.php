@@ -104,8 +104,9 @@ class ScheduleDao {
     public function getAllSchedule($role, $day) {
         $conn = Db\DbUtil::getConnection();
 
-        $sql = $conn->prepare("select schedule.hari,schedule.jam_awal,schedule.jam_akhir,schedule.lokasi, staff.nama, staff.pekerjaan from schedule inner join staff on schedule.staff=staff.email where staff.pekerjaan = ? and schedule.hari = ? order by hari ASC,jam_awal ASC");
-        $sql->bind_param("ss", $role,$day);
+        $sql = $conn->prepare("select schedule.hari,schedule.jam_awal,schedule.jam_akhir,schedule.lokasi, staff.nama, staff.pekerjaan from schedule inner join staff on schedule.staff=staff.email where staff.pekerjaan = ? and staff.status = ? and schedule.hari = ? order by hari ASC,jam_awal ASC");
+        $status = "Active";
+        $sql->bind_param("sss", $role,$status,$day);
 
         $sql->execute();
         $data = $sql->get_result();
@@ -140,6 +141,25 @@ class ScheduleDao {
         }
 
         return $array_data;
+    }
+
+    public function getScheduleStaff($role,$location,$day,$jam) {
+        $conn = Db\DbUtil::getConnection();
+
+        $sql = $conn->prepare("select * from schedule inner join staff on schedule.staff=staff.email where staff.pekerjaan = ? and staff.status = ? and schedule.lokasi = ? and schedule.hari = ? and ? between schedule.jam_awal and schedule.jam_akhir;");
+        $status="Active";
+        $sql->bind_param("sssss", $role,$status,$location,$day,$jam);
+
+        $sql->execute();
+        $data = $sql->get_result();
+
+        $array = array();
+
+        while($row = $data->fetch_assoc()) {
+            $array[$row["email"]] = $row["nama"];
+        }
+
+        return $array;
     }
 }
 

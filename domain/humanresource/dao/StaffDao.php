@@ -28,9 +28,13 @@ class StaffDao {
         $row = $data->fetch_assoc();
 
         if($row != null) {
-            if(password_verify($password, $row['password'])) {
-                return True;
-            }else {
+            if($row["status"] == "Active") {
+                if(password_verify($password, $row['password'])) {
+                    return True;
+                }else {
+                    return False;
+                }
+            } else {
                 return False;
             }
         }else {
@@ -131,8 +135,9 @@ class StaffDao {
     public function getStaffNameByRole($role) {
         $conn = Db\DbUtil::getConnection();
 
-        $sql = $conn->prepare("select nama,email from staff where pekerjaan=?");
-        $sql->bind_param("s",$role);
+        $sql = $conn->prepare("select nama,email from staff where pekerjaan = ? and status = ?");
+        $status = "Active";
+        $sql->bind_param("ss",$role,$status);
 
         $sql->execute();
         $data = $sql->get_result();

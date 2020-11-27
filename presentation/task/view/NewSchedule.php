@@ -83,15 +83,8 @@
             <div class="form-group row">
 				<label class="col-sm-2 col-form-label">Lokasi</label>
 				<div class="col-sm-3">
-                <select class="form-control" name="location">
-                    <option value="" disabled selected>Pilih salah satu lokasi</option>
-                    <option value="Lantai 1">Lantai 1</option>
-                    <option value="Lantai 2">Lantai 2</option>
-                    <option value="Lantai 3">Lantai 3</option>
-                    <option value="Lantai 4">Lantai 4</option>
-                    <option value="Lantai 5">Lantai 5</option>
-                    <option value="Lantai 6">Lantai 6</option>
-                    <option value="Ruang serbaguna">Ruang serbaguna</option>
+                <select class="form-control" name="location" id="dropDownLocation">
+                    <option value='' disabled selected>Pilih salah satu lokasi</option>
                 </select>
             	</div>
             </div>
