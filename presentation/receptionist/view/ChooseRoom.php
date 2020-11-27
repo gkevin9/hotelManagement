@@ -5,6 +5,24 @@
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../../public/js/bootstrap.min.js"></script>
         <script src="../js/CheckAvaliability.js"></script>
+        <style>
+            .card-hover:hover {
+                /* background-color: #03fcf4; */
+                color: white;
+            }
+        </style>
+        <script>
+            function test(key) {
+                var checkin = document.getElementById('checkin').value;
+                var checkout = document.getElementById('checkout').value;
+                var person = document.getElementById('person').value;
+                var url = 'NewReservation.php?room=' + key 
+                            + '&checkin=' + checkin
+                            + '&checkout=' + checkout
+                            + '&person=' + person;
+                window.location.replace(url);
+            }
+        </script>
 	</head>
 	<body>
         <div class="container">
@@ -18,15 +36,15 @@
                     <form id="checkAvaliability" method="post">
                         <div class="form-group">
                             <label>Check In</label>
-                            <input type="date" class="form-control" required name="checkin">
+                            <input type="date" class="form-control" required name="checkin" id="checkin">
                         </div>
                         <div class="form-group">
                             <label>Check Out</label>
-                            <input type="date" class="form-control" required name="checkout">
+                            <input type="date" class="form-control" required name="checkout" id="checkout">
                         </div>
                         <div class="form-group">
                             <label>Person Num</label>
-                            <input type="number" class="form-control" required name="person">
+                            <input type="number" class="form-control" required name="person" value="1" id="person">
                         </div>
                         <button type="submit" class="btn btn-primary">Check Avaliability</button>
                     </form>

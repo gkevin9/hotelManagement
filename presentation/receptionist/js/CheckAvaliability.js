@@ -3,7 +3,9 @@ $(document).ready(function() {
     $('#checkAvaliability').submit(function(event) {
       event.preventDefault();
       var formData = $('#checkAvaliability').serialize();
-      console.log("jalam");
+      var checkin = $('#checking').val();
+      var checkout = $('#checkout').val();
+      var person = $('#person').val();
 
       $.ajax({
         type : "POST",
@@ -14,11 +16,13 @@ $(document).ready(function() {
           // console.log(param);
           var temp = '';
           $.each(param, function(key, value) {
-            temp += '<div class="card"><div class="card-body"><table>'
+            temp += '<div class="card card-hover"><div class="card-body"><table>'
             + '<tr><td>Room Number :</td><td>'+key+'</td></tr>'
             + '<tr><td>Price</td><td>'+value['harga']+'</td></tr>'
             + '<tr><td>Capacity</td><td>'+value['jmlh_org']+'</td></tr>'
-            + '</table></div></div>';
+            + '</table></div>'
+            + '<button class="btn btn-warning" onclick="test('+key+')"'
+            + '>Select</button></div>';
           })
           // console.log(temp);
           $('#listroom').html(temp);
@@ -28,5 +32,9 @@ $(document).ready(function() {
         }
       });
     })
+
+    $('.btn btn-warning').on("click", function() {
+      console.log("aaa");
+    });
 
 })
