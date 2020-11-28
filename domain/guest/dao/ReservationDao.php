@@ -23,8 +23,9 @@ class ReservationDao {
             $reservation = new Entity\Reservation();
             $reservation->setId( $row['id'] );
             $reservation->setBykOrang( $row['bykOrang'] );
-            $reservation->setKamar( $row['idKamar'] );
+            $reservation->setKamar( $row['kamar'] );
             $reservation->setLama( $row['lama'] );
+            $reservation->setNama( $row['nama'] );
             $reservation->setNamaPemesan( $row['namaPemesan'] );
             $reservation->setNomorTelepon( $row['nomorTelepon'] );
             $reservation->setStatus( $row['status'] );
@@ -32,7 +33,7 @@ class ReservationDao {
             
             array_push($listReservation, $reservation);
         }
-
+        
         return $listReservation;
     }
 
