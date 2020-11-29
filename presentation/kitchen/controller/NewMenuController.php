@@ -11,6 +11,7 @@ $ctrl = new NewMenuController();
 
 $menu = $_POST['name'];
 $id = $_POST['id'];
+$bahan = $_POST['bahan'];
 
 $isValid = $ctrl->validateMenu($menu , $id);
 
@@ -22,7 +23,7 @@ if ($isValid){
 	$newMenu->setHarga($_POST['harga']);
 
     $service = new Service\MenuService();
-    $service->createNew($newMenu);
+    $service->createNew($newMenu , $bahan);
 
     print "../view/ListMenu.php";
 } else {
