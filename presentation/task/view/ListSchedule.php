@@ -4,6 +4,7 @@
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../js/ajax/SearchAllSchedule.js"></script>
+        <script src="../js/ajax/DeleteSchedule.js"></script>
     </head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -20,9 +21,11 @@
 		        		<a class="nav-link" href="ListSchedule.php">Schedule<span class="sr-only">(current)</span></a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="ListTask.php">Task</a>
+		        		<a class="nav-link" href="ListTask.php">Task Seluruh Staff</a>
 		      		</li>
-					  
+                    <li class="nav-item">
+		        		<a class="nav-link" href="../../operationsupervisor/view/ListTaskPerStaff.php">Task Individu</a>
+		      		</li>  
 		    	</ul>
 		  	</div>
 		</nav>

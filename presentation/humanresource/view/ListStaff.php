@@ -18,9 +18,11 @@
 		        		<a class="nav-link" href="../../task/view/ListSchedule.php">Schedule</a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="../../task/view/ListTask.php">Task</a>
+		        		<a class="nav-link" href="../../task/view/ListTask.php">Task Seluruh Staff</a>
 		      		</li>
-					  
+					<li class="nav-item">
+		        		<a class="nav-link" href="../../operationsupervisor/view/ListTaskPerStaff.php">Task Individu</a>
+		      		</li>
 		    	</ul>
 		  	</div>
 		</nav>

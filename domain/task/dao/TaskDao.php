@@ -15,7 +15,7 @@ class TaskDao {
     public function getTaskByRole($role) {
         $conn = Db\DbUtil::getConnection();
 
-        $sql = $conn->prepare("select * from task inner join staff on task.staff=staff.email where staff.pekerjaan = ? ");
+        $sql = $conn->prepare("select staff.nama,task.keterangan,task.tanggal,task.status from task inner join staff on task.staff=staff.email where staff.pekerjaan = ? ");
         $sql->bind_param("s", $role);
 
         $sql->execute();
@@ -54,5 +54,41 @@ class TaskDao {
         $sql->close();
     }
 
+    public function getAllTaskPerStaff($email) {
+        $conn = Db\DbUtil::getConnection();
+        $status = "Active";
+        $sql = $conn->prepare("select * from task where staff = ? and status = ?");
+        $sql->bind_param("ss", $email,$status);
+        
+        $sql->execute();
+        $data = $sql->get_result();
+
+        $listTask = array();
+
+        while ($row = mysqli_fetch_array($data)){
+            $task = new Entity\Task();
+            $task->setId( $row["id"] );
+            $task->setKeterangan( $row["keterangan"] );
+            $task->setTanggal( $row["tanggal"] );
+
+            array_push($listTask, $task);
+        }
+
+        return $listTask;
+    }
+
+    public function updateTask($taskId) {
+        $conn = Db\DbUtil::getConnection();
+
+        $sql = $conn->prepare("update task set status = ? where id = ?");
+        $status = "Done";
+        $sql->bind_param("ss",$status ,$taskId);
+
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        $sql->close();
+    }
 }
 ?>

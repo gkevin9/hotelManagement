@@ -29,5 +29,17 @@ class TaskService {
         $dao = new Dao\TaskDao();
         $dao->insertTask($task);
     }
+
+    public function getAllTaskPerStaff($email) {
+        $dao = new Dao\TaskDao();
+        $listStaff = $dao->getAllTaskPerStaff($email);
+        
+        return $listStaff;
+    }
+
+    public function updateTask($taskId) {
+        $dao = new Dao\TaskDao();
+        $dao->updateTask($taskId);
+    }
 }
 ?>
