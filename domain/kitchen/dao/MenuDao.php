@@ -32,22 +32,33 @@ class MenuDao {
         return $listMenu;
     }
 
-    public function createNew(Entity\Menu $newMenu) {
+    public function createNew(Entity\Menu $newMenu , $arraybahan) {
         $conn = DbUtil\DbUtil::getConnection();
 
         //prepare
-        $id = $newMenu->getId();
+        $id_menu = $newMenu->getId();
         $nama = $newMenu->getNama();
         $jenis = $newMenu->getJenis();
         $harga = $newMenu->getHarga();
         
         $sql = $conn->prepare("insert into menu values(?, ?, ?, ?)");
-        $sql->bind_param("ssss", $id, $nama, $jenis, $harga);
+        $sql->bind_param("ssss", $id_menu, $nama, $jenis, $harga);
         
         if (!$sql->execute()) {
             die(htmlspecialchars($sql->error));
         }
 
+        $id_bahan = '';
+
+        $sql = $conn->prepare("insert into bahan_menu values(?, ?)");
+        $sql->bind_param("ss", $id_bahan, $id_menu);
+
+        foreach ($arraybahan as $bahan){
+           $id_bahan = $bahan;
+           if (!$sql->execute()) {
+                die(htmlspecialchars($sql->error));
+            }
+        }
         $sql->close();
     }
 

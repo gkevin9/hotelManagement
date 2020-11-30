@@ -32,10 +32,9 @@ create table menu(
 );
 
 create table bahan_menu(
-	id varchar(16),
 	id_bahan varchar(16),
 	id_menu varchar(16),
-	primary key(id),
+	primary key(id_bahan , id_menu),
 	foreign key (id_bahan) REFERENCES bahan(id),
 	foreign key (id_menu) REFERENCES menu(id)
 );
