@@ -62,7 +62,7 @@ insert into kamar values(1500000, '2', 102, 4, 0);
 insert into kamar values(1500000, '3', 103, 2, 0);
 
 create table reservation (
-	id varchar(10),
+	id int not null auto_increment,
 	bykOrang int(3),
 	kamar int(11),
 	lama int(2),
@@ -95,4 +95,13 @@ create table task (
 	tanggal timestamp,
 	primary key(id),
 	foreign key(staff) references staff(email)
+);
+
+create table customerStay (
+	id int,
+	nominalUangMuka int,
+	waktuCheckIn timestamp,
+	waktuCheckOut timestamp,
+	primary key (id),
+	foreign key (id) references reservation(id)
 );
