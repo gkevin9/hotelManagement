@@ -9,6 +9,7 @@ class Menu
 	private $nama;
 	private $jenis;
 	private $harga;
+	private $bahan;
 
 	public function setId($id) {
 		$this->id = $id;
@@ -40,6 +41,26 @@ class Menu
 
 	public function getHarga() {
 		return $this->harga;
+	}
+
+	/**
+	 * Get the value of bahan
+	 */ 
+	public function getBahan()
+	{
+		return $this->bahan;
+	}
+
+	/**
+	 * Set the value of bahan
+	 *
+	 * @return  self
+	 */ 
+	public function setBahan($bahan)
+	{
+		$this->bahan = $bahan;
+
+		return $this;
 	}
 }
 ?>

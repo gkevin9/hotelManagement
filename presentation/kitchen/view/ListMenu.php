@@ -31,6 +31,7 @@
 						<th scope="col">Name</th>
 						<th scope="col">Jenis</th>
 						<th scope="col">Harga</th>
+						<th scope="col">Bahan</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -49,9 +50,19 @@
 						echo "<td>".$menu->getNama()."</td>";
 						echo "<td>".$menu->getJenis()."</td>";
 						echo "<td>".$menu->getHarga()."</td>";
+						$str = "<td>";
+						foreach($menu->getBahan() as $bahan){
+							$str.=$bahan." , ";
+						}
+						$str .= "</td>";
+						echo $str;
 						echo "</tr>";
+
 					}
+
+
 					?>
+
 				</tbody>
 			</table>
 		</div>	

@@ -16,7 +16,7 @@ use domain\kitchen\model as Model;
 class MenuService {
   public function getAllMenu(){
     $dao = new Dao\MenuDao();
-    $listMenu= $dao->getAll();
+    $listMenu= $dao->getAllDenganBahan();
 
     return $listMenu;
   }
@@ -25,7 +25,7 @@ class MenuService {
     $menu = new Entity\Menu();
     $menu->setId($menuModel->getId());
     $menu->setNama($menuModel->getNama());
-    $menu->setJenis($menuModel->getNama());
+    $menu->setJenis($menuModel->getJenis());
     $menu->setHarga($menuModel->getHarga());
     
     $dao = new Dao\MenuDao();
