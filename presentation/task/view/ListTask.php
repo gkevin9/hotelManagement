@@ -20,9 +20,11 @@
 		        		<a class="nav-link" href="ListSchedule.php">Schedule</a>
 		      		</li>
 		      		<li class="nav-item active">
-		        		<a class="nav-link" href="ListTask.php">Task<span class="sr-only">(current)</span></a>
+		        		<a class="nav-link" href="ListTask.php">Task Seluruh Staff<span class="sr-only">(current)</span></a>
 		      		</li>
-					  
+					  <li class="nav-item">
+		        		<a class="nav-link" href="../../operationsupervisor/view/ListTaskPerStaff.php">Task Individu</a>
+		      		</li>  
 		    	</ul>
 		  	</div>
 		</nav>

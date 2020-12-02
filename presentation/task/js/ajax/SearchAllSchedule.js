@@ -29,13 +29,14 @@ $( document ).ready(function() {
                 jQuery.each(data, function(index, value){
                   var str=("<tr>");  
                   jQuery.each(value, function(index_data, value_data){
-                      if(index_data!="role" && index_data!="day")
+                      if(index_data !="role" && index_data != "day" && index_data != "id")
                         str+=("<td>"+value_data+"</td>");
-                      else if(index_data=="role")
+                      else if(index_data == "role")
                         role=value_data;
-                      else if(index_data=="day")
+                      else if(index_data == "day")
                         hari=value_data;
-
+                      else if(index_data == "id")
+                        str+=("<td><input type='button' value='Hapus' class='hapus' name='hapus' id='"+value_data+"'/></td>");
                   });
                   str+=("</tr>");
                   $("#jadwalstaff").append(str);

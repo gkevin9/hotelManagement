@@ -17,10 +17,10 @@ class MenuController {
         return $listMenu;
     }
 
-    public function createNew (Model\NewMenuModel $newMenu){
+    public function createNew (Model\NewMenuModel $newMenu , $bahan){
         
         $service = new Service\MenuService();
-        $service->createNew($newMenu);
+        $service->createNew($newMenu , $bahan);
     }
 }
 

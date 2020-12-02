@@ -21,7 +21,7 @@ class MenuService {
     return $listMenu;
   }
 
-  public function createNew(Model\NewMenuModel $menuModel) {
+  public function createNew(Model\NewMenuModel $menuModel , $bahan) {
     $menu = new Entity\Menu();
     $menu->setId($menuModel->getId());
     $menu->setNama($menuModel->getNama());
@@ -29,7 +29,7 @@ class MenuService {
     $menu->setHarga($menuModel->getHarga());
     
     $dao = new Dao\MenuDao();
-    $dao->createNew($menu);
+    $dao->createNew($menu , $bahan);
   }
 
   public function validateCredential($menu , $id) {

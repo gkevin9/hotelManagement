@@ -104,7 +104,7 @@ class ScheduleDao {
     public function getAllSchedule($role, $day) {
         $conn = Db\DbUtil::getConnection();
 
-        $sql = $conn->prepare("select schedule.hari,schedule.jam_awal,schedule.jam_akhir,schedule.lokasi, staff.nama, staff.pekerjaan from schedule inner join staff on schedule.staff=staff.email where staff.pekerjaan = ? and staff.status = ? and schedule.hari = ? order by hari ASC,jam_awal ASC");
+        $sql = $conn->prepare("select schedule.hari,schedule.jam_awal,schedule.jam_akhir,schedule.lokasi, staff.nama, staff.pekerjaan, schedule.id from schedule inner join staff on schedule.staff=staff.email where staff.pekerjaan = ? and staff.status = ? and schedule.hari = ? order by hari ASC,jam_awal ASC");
         $status = "Active";
         $sql->bind_param("sss", $role,$status,$day);
 
@@ -137,6 +137,7 @@ class ScheduleDao {
             $array["nama"] = $row["nama"];
             $array["role"] = $row["pekerjaan"];
             $array["day"] = $hari;
+            $array["id"] = $row["id"];
             array_push($array_data,$array);
         }
 
@@ -160,6 +161,19 @@ class ScheduleDao {
         }
 
         return $array;
+    }
+
+    public function deleteSchedule($schedId) {
+        $conn = Db\DbUtil::getConnection();
+
+        $sql = $conn->prepare("delete from schedule where id = ?");
+        $sql->bind_param("s", $schedId);
+
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        $sql->close();
     }
 }
 

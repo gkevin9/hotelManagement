@@ -61,6 +61,11 @@ class ScheduleService {
         $data = $dao->getScheduleStaff($role,$location,$day,$jam);
         return $data;
     }
+
+    public function deleteSchedule($schedId) {
+        $dao = new Dao\ScheduleDao();
+        $dao->deleteSchedule($schedId);
+    }
     
 }
 ?>

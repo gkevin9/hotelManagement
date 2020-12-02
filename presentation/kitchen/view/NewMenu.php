@@ -44,6 +44,24 @@
 				</div>
 			</div>
 			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Ingredients</label>
+				<div class="col-sm-3">
+					<?php
+					include_once('../controller/BahanController.php');
+					use presentation\kitchen\controller as Ctrl;
+					
+					$ctrl = new Ctrl\BahanController();
+					$listBahan = $ctrl->getAll();
+					
+					foreach ($listBahan as $bahan) {
+						echo "<input type='checkbox' name='bahan[]' value='".$bahan->getId()."' />".$bahan->getNama()."<br>";
+					}
+					
+					?>
+				</div>
+			</div>
+			
+			<div class="form-group row">
 				<label class="col-sm-2 col-form-label"></label>
 				<div class="col-sm-3">
 					<button class="btn btn-primary mb-2" name='submit'>Save</button>
