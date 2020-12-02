@@ -68,7 +68,7 @@ $(document).ready(function() {
                 data: inputData,
                 success: function(param) {
                     console.log('beres');
-                    // window.location.replace('ListReservation.php');
+                    window.location.replace('ListReservation.php');
                 },
                 error: function(e) {
                     alert("ERROR: ", e);
@@ -86,7 +86,7 @@ $(document).ready(function() {
             url: '../controller/NewReservationController.php',
             data: inputData,
             success: function(param) {
-                // window.location.replace('ListReservation.php');
+                window.location.replace('ListReservation.php');
             },
             error: function(e) {
                 alert("ERROR: ", e);

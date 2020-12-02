@@ -60,7 +60,7 @@
                         <button class="btn btn-primary mb-2" name='submit'>Submit</button>
                     </div>
                     <div class="col-sm-1">
-                        <a href="ChooseRoom.php" class="btn btn-danger">Cancle</a>
+                        <a href="ChooseRoom.php" class="btn btn-danger">Cancel</a>
                     </div>
                 </div>
             </form>
