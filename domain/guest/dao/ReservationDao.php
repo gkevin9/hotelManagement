@@ -68,5 +68,23 @@ class ReservationDao {
 
         $sql->close();
     }
+
+    public function getSelectedReservationWithRoom($id) {
+        $conn = Db\DbUtil::getConnection();
+        
+        $sql = "select * from reservation r inner join kamar k on r.kamar = k.nomor_kamar where r.id = $id";
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+        $row = mysqli_fetch_array($result);
+        $harga = $row['harga'];
+
+        return $harga;
+    }
+
+    public function changeReservationStatus($id) {
+        $conn = Db\DbUtil::getConnection();
+        $sql = "update reservation set status='DONE' where id=$id";
+        mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    }
 }
 ?>

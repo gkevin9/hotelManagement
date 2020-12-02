@@ -45,6 +45,7 @@
 						<th scope="col">Room</th>
 						<th scope="col">Phone Num</th>
 						<th scope="col">Status</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,6 +67,11 @@
 					echo "<td>".$reservation->getKamar()."</td>";
 					echo "<td>".$reservation->getNomorTelepon()."</td>";
 					echo "<td>".$reservation->getStatus()."</td>";
+					if($reservation->getStatus() == "ACTIVE") {
+						echo "<td><a href='../controller/CustomerCheckinController.php?id=".$reservation->getId()."'><button class='btn btn-warning'>Checkin</button></a></td>";
+					}else {
+						echo "<td><button class='btn btn-warning' disabled>Checkin</button></td>";
+					}
 					echo "</tr>";
 				}
 				?>

@@ -105,3 +105,5 @@ create table customerStay (
 	primary key (id),
 	foreign key (id) references reservation(id)
 );
+
+alter table customerStay change waktuCheckIn waktuCheckIn timestamp NOT NULL default CURRENT_TIMESTAMP;

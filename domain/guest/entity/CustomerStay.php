@@ -6,15 +6,6 @@ Class CustomerStay{
       private $nominalUangMuka;
       private $waktuCheckIn;
       private $waktuCheckOut;
-      private $reservation;
-
-      public function setReservation($reservation) {
-        $this->reservation = $reservation;
-      }
-
-      public function getReservation() {
-        return $this->reservation;
-      }
 
       public function setId($id) {
         $this->id = $id;
