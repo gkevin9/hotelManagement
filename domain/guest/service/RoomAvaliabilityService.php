@@ -9,16 +9,16 @@ use domain\guest\service as ServiceReservation;
 
 class RoomAvaliabilityService {
 
-    public function getAvaliableRoomFromDate($dateCheckIn, $dateCheckOut) {
+    public function getAvaliableRoomFromDate($dateCheckIn, $dateCheckOut, $person) {
         $listRoom = $this->getRoom();
         $listReservation = $this->getReservation();
 
         $roomAssocArray = $this->arrayToAssocArray($listRoom);
-        $newListReservation = $this->filterReservationWithSameDate($listReservation, $dateCheckIn, $dateCheckOut, $roomAssocArray);
-        // $newRoomAssocArray = $this->removeOcupiedRoom($roomAssocArray, $listReservation);
+        $roomAssocArray = $this->filterReservationWithSameDate($listReservation, $dateCheckIn, $dateCheckOut, $roomAssocArray);
+        $newRoomAssocArray = $this->removeInsufficientRoom($roomAssocArray, $person);
 
-        // return $newRoomAssocArray;
-        return $newListReservation;
+        return $newRoomAssocArray;
+        // return $newListReservation;
     }
 
     public function getRoom() {
@@ -40,17 +40,6 @@ class RoomAvaliabilityService {
         $result = $serviceRoom->arrayToAssocArray($array);
 
         return $result;
-    }
-
-    private function removeOcupiedRoom($roomAssocArray, $listReservation) {
-        
-        foreach ($listReservation as $reservation) {
-            if (!array_key_exists($reservation->getKamar(), $roomAssocArray)) {
-                unset($roomAssocArray[$reservation->getKamar()]);
-            }
-        }
-
-        return $roomAssocArray;
     }
 
     private function filterReservationWithSameDate($listReservation, $dateCheckin, $dateCheckout, $roomAssocArray) {
