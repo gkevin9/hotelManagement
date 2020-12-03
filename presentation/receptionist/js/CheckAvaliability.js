@@ -14,18 +14,27 @@ $(document).ready(function() {
         dataType : "json",
         success : function(param) {
           // console.log(param);
-          var temp = '';
-          $.each(param, function(key, value) {
-            temp += '<div class="card card-hover"><div class="card-body"><table>'
-            + '<tr><td>Room Number :</td><td>'+key+'</td></tr>'
-            + '<tr><td>Price</td><td>'+value['harga']+'</td></tr>'
-            + '<tr><td>Capacity</td><td>'+value['jmlh_org']+'</td></tr>'
-            + '</table></div>'
-            + '<button class="btn btn-warning" onclick="test('+key+')"'
-            + '>Select</button></div>';
-          })
-          // console.log(temp);
-          $('#listroom').html(temp);
+          $("#alert").hide();
+          if(param == "wrongCheckinDate") {
+            $("#checkin").addClass("is-invalid");
+          }else if(param == "noRoom") {
+            $("#alert").show();
+            $('#listroom').html('');
+          }else {
+            $("#checkin").removeClass("is-invalid");
+            var temp = '';
+            $.each(param, function(key, value) {
+              temp += '<div class="card card-hover"><div class="card-body"><table>'
+              + '<tr><td>Room Number :</td><td>'+key+'</td></tr>'
+              + '<tr><td>Price</td><td>'+value['harga']+'</td></tr>'
+              + '<tr><td>Capacity</td><td>'+value['jmlh_org']+'</td></tr>'
+              + '</table></div>'
+              + '<button class="btn btn-warning" onclick="test('+key+')"'
+              + '>Select</button></div>';
+            })
+            
+            $('#listroom').html(temp);
+          }
         },
         error : function(e) {
           alert("ERROR: ", e);

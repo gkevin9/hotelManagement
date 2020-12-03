@@ -8,8 +8,19 @@ use domain\guest\service as ServiceReservation;
 $checkin = $_POST['checkin'];
 $checkout = $_POST['checkout'];
 $person = $_POST['person'];
-$ctrl = new ServiceReservation\RoomAvaliabilityService();
-$avaliableRoomArray = $ctrl->getAvaliableRoomFromDate($checkin, $checkout, $person);
-// echo var_dump($newRoomAssocArray);
-print json_encode($avaliableRoomArray);
+
+if($checkin >= $checkout) {
+    print json_encode("wrongCheckinDate");
+}else {
+    $ctrl = new ServiceReservation\RoomAvaliabilityService();
+    $avaliableRoomArray = $ctrl->getAvaliableRoomFromDate($checkin, $checkout, $person);
+    
+    if(empty($avaliableRoomArray)) {
+        print json_encode("noRoom");
+    }else {
+        print json_encode($avaliableRoomArray);
+    }
+    
+}
+
 ?>

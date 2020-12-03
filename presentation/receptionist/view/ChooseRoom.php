@@ -37,6 +37,9 @@
                         <div class="form-group">
                             <label>Check In</label>
                             <input type="date" class="form-control" required name="checkin" id="checkin">
+                            <div class="invalid-feedback">
+                                Checkin date must smaller than checkout date
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Check Out</label>
@@ -50,15 +53,11 @@
                     </form>
                 </div>
                 <div class="col">
+                    <div id="alert" class="alert alert-danger" role="alert" style="display: none;">
+                        No room avaliable
+                    </div>
                     <div class="card-deck" id="listroom">
-                        <!-- <div class="card">
-                            <div class="card-body">
-                                <table>
-                                    <tr><td>Room Number :</td><td>1</td></tr>
-                                    <tr><td>Price</td><td>100000</td></tr>
-                                </table>
-                            </div>                        
-                        </div> -->
+                        <!--card in javascrip ajax-->
                     </div>
                 </div>
             </div>
