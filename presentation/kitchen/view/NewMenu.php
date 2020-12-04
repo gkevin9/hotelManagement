@@ -25,7 +25,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Name</label>
 				<div class='col-sm-3'>
-					<input type="text" name="name" required id="name" class="form-control">
+					<input type="text" name="name" required id="name" class="form-control" maxlength="20">
 					<div class ="invalid-feedback">
 						Menu udh ada
 					</div>
@@ -40,7 +40,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Price</label>
 				<div class="col-sm-3">
-					<input type="text" name="harga" required id="harga" class="form-control">
+					<input type="number" name="harga" required id="harga" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">

@@ -66,24 +66,31 @@ class MenuDao {
             // echo $row[4].$row[0]."<br>";
         
             if ($count == 0){
-                echo "A";
+                // echo "A";
                 array_push($listBahan,$row[4]);
             } else {
                 if ($temp == $row[0]){
-                    echo "B";
+                    // echo "B";
                     array_push($listBahan,$row[4]);
 
                     if ((mysqli_num_rows($result) - 1) == $count){
-                        echo "C";
+                        // echo "C";
                         $menu->setBahan($listBahan);
                         array_push($listMenu , $menu);
                     }
                 } else {
-                    echo "D";
-                    array_push($listBahan,$row[4]);
+                    // echo "D";
+                    
                     $temp_menu->setBahan($listBahan);
                     $listBahan = array();
-    
+                    array_push($listBahan,$row[4]);
+
+                    if ((mysqli_num_rows($result) - 1) == $count){
+                        // echo "E";
+                        $menu->setBahan($listBahan);
+                        array_push($listMenu , $menu);
+                    }
+
                     array_push($listMenu , $temp_menu);
                 }    
             }
