@@ -29,7 +29,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Phone Number</label>
 				<div class="col-sm-3">
-					<input type="text" name="nomorHp" required id="nomorHp" class="form-control">
+					<input type="number" name="nomorHp" required id="nomorHp" class="form-control">
 				</div>
             </div>
             <div class="form-group row">
