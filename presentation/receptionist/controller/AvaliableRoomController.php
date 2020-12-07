@@ -24,8 +24,8 @@ $person = $_POST['person'];
 // }
 
 $ctrl = new AvaliableRoomController();
-$result = $ctrl->getAvaliableRoom();
-print json_encode($result)
+$result = $ctrl->getAvaliableRoom($checkin, $checkout, $person);
+print json_encode($result);
 
 class AvaliableRoomController {
     public function getAvaliableRoom($checkin, $checkout, $person) {
