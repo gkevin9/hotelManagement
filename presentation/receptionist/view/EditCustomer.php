@@ -1,5 +1,10 @@
 <?php
 namespace presentation\receptionist\view;
+session_start();
+if($_SESSION["role"] != "Receptionist"){
+	$loginError = "You are not logged in or not OperationSupervisor";
+    echo "<script type='text/javascript'>alert('$loginError');window.location.href='../../../index.html'</script>";
+}	
 require_once('../controller/CustomerController.php');
 use domain\guest\model as Model;
 use presentation\receptionist\controller as Ctrl;

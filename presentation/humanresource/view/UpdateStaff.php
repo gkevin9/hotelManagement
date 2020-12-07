@@ -1,27 +1,31 @@
 <?php
-    session_start();
-    require_once('../../../domain/humanresource/entity/Staff.php');
-    $staff = unserialize($_SESSION['staff']);
+session_start();
+if($_SESSION["role"] != "OperationSupervisor"){
+	$loginError = "You are not logged in or not OperationSupervisor";
+    echo "<script type='text/javascript'>alert('$loginError');window.location.href='../../../index.html'</script>";
+}	
+require_once('../../../domain/humanresource/entity/Staff.php');
+$staff = unserialize($_SESSION['staff']);
 
-    use domain\humanresource\model as Model;
-    use presentation\humanresource\controller as Ctrl;
-    if (isset($_POST['submit'])) {
-        require_once('../controller/OperationController.php');
-        require_once('../../../domain/humanresource/model/NewStaffModel.php');
+use domain\humanresource\model as Model;
+use presentation\humanresource\controller as Ctrl;
+if (isset($_POST['submit'])) {
+    require_once('../controller/OperationController.php');
+    require_once('../../../domain/humanresource/model/NewStaffModel.php');
         
-        $newStaff = new Model\NewStaffModel();
-        $newStaff->setEmail($_POST['email']);
-        $newStaff->setNama($_POST['nama']);
-        $newStaff->setNomorHp($_POST['nomorHp']);
-        $newStaff->setPassword($_POST['password']);
-        $newStaff->setPekerjaan($staff->getPekerjaan());
-        $newStaff->setStatus($_POST['status']);
+    $newStaff = new Model\NewStaffModel();
+    $newStaff->setEmail($_POST['email']);
+    $newStaff->setNama($_POST['nama']);
+    $newStaff->setNomorHp($_POST['nomorHp']);
+    $newStaff->setPassword($_POST['password']);
+	$newStaff->setPekerjaan($staff->getPekerjaan());
+	$newStaff->setStatus($_POST['status']);
 
-        $ctrl = new Ctrl\OperationController();
-        $ctrl->updateStaff($newStaff);
+	$ctrl = new Ctrl\OperationController();
+	$ctrl->updateStaff($newStaff);
 
-        header("Location: ListStaff.php");
-    }
+	header("Location: ListStaff.php");
+}
 ?>
 
 <!DOCTYPE html>

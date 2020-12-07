@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION["role"] != "Chef"){
+	$loginError = "You are not logged in or not OperationSupervisor";
+    echo "<script type='text/javascript'>alert('$loginError');window.location.href='../../../index.html'</script>";
+}	
+?>
 <html>
 	<head>
 		<title>Menu</title>
