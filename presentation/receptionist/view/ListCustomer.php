@@ -15,18 +15,18 @@
 		        		<a class="nav-link" href="ListReservation.php">Reservation</a>
 		      		</li>
 		      		<li class="nav-item  active">
-		        		<a class="nav-link" href="">Customer<span class="sr-only">(current)</span></a>
+		        		<a class="nav-link" href="#">Customer<span class="sr-only">(current)</span></a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="#">Task</a>
+		        		<a class="nav-link" href="ListTaskPerStaff.php">Task</a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="#">Check Out</a>
+		        		<a class="nav-link" href="ListCheckOut.php">Check Out</a>
 		      		</li>
 		    	</ul>
 			</div>
 			<div class="d-flex flex-row-reverse bd-highlight">
-				<a class="btn btn-danger" href="#">Log Out</a>
+					<a class="btn btn-danger" href="../../LogoutController.php">Log Out</a>
 			</div>
 		</nav>
 		<div class="container-fluid">

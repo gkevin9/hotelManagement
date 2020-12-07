@@ -16,7 +16,7 @@ $( document ).ready(function() {
             var count = param.length;
             $("#dropDownStaffName").empty();
             $("#dropDownLocation").empty();
-            if (count>3) {
+            if (count>2) {
                 var data=$.parseJSON(param);
                 $("#dropDownStaffName").append("<option value='' disabled selected>Pilih salah satu staff</option>");
                 jQuery.each(data, function(index, value){

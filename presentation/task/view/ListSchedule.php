@@ -27,7 +27,10 @@
 		        		<a class="nav-link" href="../../operationsupervisor/view/ListTaskPerStaff.php">Task Individu</a>
 		      		</li>  
 		    	</ul>
-		  	</div>
+              </div>
+            <div class="d-flex flex-row-reverse bd-highlight">
+					<a class="btn btn-danger" href="../../LogoutController.php">Log Out</a>
+			</div>
 		</nav>
 		<div class="container-fluid">
 			<br>

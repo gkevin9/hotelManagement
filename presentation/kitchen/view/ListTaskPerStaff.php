@@ -7,23 +7,20 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Operation Supervisor</a>
+			<a class="navbar-brand" href="#">Chef</a>
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		    	<span class="navbar-toggler-icon"></span>
 		  	</button>
 		  	<div class="collapse navbar-collapse" id="navbarNav">
-		    	<ul class="navbar-nav">
-					<li class="nav-item">
-                        <a class="nav-link" href="../../humanresource/view/ListStaff.php">Staff</a>
-					</li>
-					<li class="nav-item">
-		        		<a class="nav-link" href="../../task/view/ListSchedule.php">Schedule</a>
+			  <ul class="navbar-nav">
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="ListMenu.php">Menu</a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="../../task/view/ListTask.php">Task Seluruh Staff</a>
-		      		</li>
+		        		<a class="nav-link" href="ListBahan.php">Bahan</a>
+					</li>
 					<li class="nav-item active">
-		        		<a class="nav-link" href="ListTaskPerStaff.php">Task Individu<span class="sr-only">(current)</span></a>
+		        		<a class="nav-link" href="ListTaskPerStaff.php">Task<span class="sr-only">(current)</span></a>
 		      		</li>
 		    	</ul>
 			  </div>

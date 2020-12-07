@@ -18,7 +18,7 @@
 		        		<a class="nav-link" href="ListCustomer.php">Customer</a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="#">Task</a>
+		        		<a class="nav-link" href="ListTaskPerStaff.php">Task</a>
 		      		</li>
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="ListCheckOut.php">Check Out</a>
@@ -26,7 +26,7 @@
 				</ul>	
 			</div>
 			<div class="d-flex flex-row-reverse bd-highlight">
-				<button class="btn btn-danger">Log Out</button>
+					<a class="btn btn-danger" href="../../LogoutController.php">Log Out</a>
 			</div>
 		</nav>
 		<div class="container-fluid">

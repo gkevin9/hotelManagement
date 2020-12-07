@@ -3,29 +3,29 @@
 		<title>Staff</title>
         <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="../js/ajax/DoneTask.js"></script>
+        <script src="../js/DoneTask.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Operation Supervisor</a>
+			<a class="navbar-brand" href="#">Receptionist</a>
 		  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 		    	<span class="navbar-toggler-icon"></span>
 		  	</button>
 		  	<div class="collapse navbar-collapse" id="navbarNav">
-		    	<ul class="navbar-nav">
-					<li class="nav-item">
-                        <a class="nav-link" href="../../humanresource/view/ListStaff.php">Staff</a>
-					</li>
-					<li class="nav-item">
-		        		<a class="nav-link" href="../../task/view/ListSchedule.php">Schedule</a>
+			  <ul class="navbar-nav">
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="ListReservation.php">Reservation</a>
 		      		</li>
 		      		<li class="nav-item">
-		        		<a class="nav-link" href="../../task/view/ListTask.php">Task Seluruh Staff</a>
+		        		<a class="nav-link" href="ListCustomer.php">Customer</a>
 		      		</li>
-					<li class="nav-item active">
-		        		<a class="nav-link" href="ListTaskPerStaff.php">Task Individu<span class="sr-only">(current)</span></a>
+		      		<li class="nav-item active">
+		        		<a class="nav-link" href="#">Task<span class="sr-only">(current)</span></a>
 		      		</li>
-		    	</ul>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="ListCheckOut.php">Check Out</a>
+					</li>
+				</ul>
 			  </div>
 			<div class="d-flex flex-row-reverse bd-highlight">
 					<a class="btn btn-danger" href="../../LogoutController.php">Log Out</a>
@@ -49,7 +49,7 @@
 					<?php
 					//tadinya mau lewat customer controller, trus datanya disimpen di session
 					//ternyata pas dikeluarin dari session, gabisa diambil object nya
-					require_once('../controller/TaskController.php');
+					require_once('../../operationsupervisor/controller/TaskController.php');
 					require_once('../../../domain/task/model/NewTaskModel.php');
 
 					use presentation\operationsupervisor\controller as Ctrl;

@@ -16,9 +16,15 @@
 		      		</li>
 		      		<li class="nav-item  active">
 		        		<a class="nav-link" href="ListBahan.php">Bahan<span class="sr-only">(current)</span></a>
+					  </li>
+					<li class="nav-item">
+		        		<a class="nav-link" href="ListTaskPerStaff.php">Task</a>
 		      		</li>
 		    	</ul>
-		  	</div>
+			  </div>
+			<div class="d-flex flex-row-reverse bd-highlight">
+					<a class="btn btn-danger" href="../../LogoutController.php">Log Out</a>
+			</div>
 		</nav>
 		<div class="container-fluid">
 			<br>
