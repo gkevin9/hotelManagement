@@ -23,12 +23,15 @@ use domain\humanresource\service as Service;
         $_SESSION["email"] = $email;
         // $_SESSION["role"] = "admin";
         if ($role == "Receptionist") {
+            $_SESSION["role"] = "Receptionist";
             // header('Location: receptionist/view/ListCustomer.php');
             print "presentation/receptionist/view/ListCustomer.php";
         }else if ($role == "Chef") {
+            $_SESSION["role"] = "Chef";
             // header('Location: kitchen/view/ListBahan.php');
             print "presentation/kitchen/view/ListBahan.php";
         }else if ($role == "OperationSupervisor") {
+            $_SESSION["role"] = "OperationSupervisor";
             // header('Location: humanresource/view/ListStaff.php');
             print "presentation/humanresource/view/ListStaff.php";
         }
