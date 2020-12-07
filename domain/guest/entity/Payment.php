@@ -2,27 +2,27 @@
 namespace domain\guest\entity;
 
 Class Payment{
-      private $docno;
+      private $docNo;
       private $jumlah;
       private $kasir;
       private $metode;
       private $tanggal;
       private $bill;
 
-      public function setBilling($bill) {
+      public function setBill($bill) {
         $this->bill = $bill;
       }
 
-      public function getBilling() {
+      public function getBill() {
         return $this->bill;
       }
 
       public function setDocno($docno) {
-        $this->docno = $docno;
+        $this->docNo = $docno;
       }
 
       public function getDocno() {
-        return $this->docno;
+        return $this->docNo;
       }
 
       public function setJumlah($jumlah) {

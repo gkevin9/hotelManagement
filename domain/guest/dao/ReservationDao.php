@@ -81,10 +81,50 @@ class ReservationDao {
         return $harga;
     }
 
+    public function getSelectedReservationWithLama($id) {
+        $conn = Db\DbUtil::getConnection();
+        
+        $sql = "select * from reservation r where r.id = $id";
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+        $row = mysqli_fetch_array($result);
+        $lama = $row['lama'];
+
+        return $lama;
+    }
+
     public function changeReservationStatus($id) {
         $conn = Db\DbUtil::getConnection();
         $sql = "update reservation set status='DONE' where id=$id";
         mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    }
+
+    public function getAllWithCustomerStay() {
+        
+        $conn = Db\DbUtil::getConnection();
+        
+        $sql = "select * from reservation inner join customerStay on reservation.id = customerStay.id";
+        $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+        $list = array();
+
+        while ($row = mysqli_fetch_array($result)) {
+            $array = array();
+            $array['id'] = $row['id'];
+            $array['custId'] = $row['nama'];
+            $array['custName'] = $row['namaPemesan'];
+            $array['orang'] = $row['bykOrang'];
+            $array['checkin'] = $row['tanggalCheckin'];
+            $array['lama'] = $row['lama'];
+            $array['room'] = $row['kamar'];
+            $array['hp'] = $row['nomorTelepon'];
+            $array['waktuCheckOut'] = $row['waktuCheckOut'];
+            $array['status'] = $row['status'];
+
+            array_push($list, $array);
+        }
+        
+        return $list;
     }
 }
 ?>

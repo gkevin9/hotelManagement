@@ -20,6 +20,13 @@ class ReservationService {
     return $listReservation;
   }
 
+  public function getAllReservationWithCustStay() {
+    $dao = new Dao\ReservationDao();
+    $listReservation = $dao->getAllWithCustomerStay();
+
+    return $listReservation;
+  }
+
   public function newReservation(Model\NewReservationModel $newReservation) {
     $reservation = new Entity\Reservation();
     $reservation->setKamar($newReservation->getKamar());

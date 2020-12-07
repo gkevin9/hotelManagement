@@ -10,11 +10,11 @@ use domain\guest\dao as Dao;
 
 class CustomerStayService {
     public function newCustomerStay($id) {
-        $uangMuka = $this->getUangMuka($id);
+        $uangMukaTotal = $this->getTotalUangMuka($id);
 
         $entity = new Entity\CustomerStay();
         $entity->setId($id);
-        $entity->setNominalUangMuka($uangMuka);
+        $entity->setNominalUangMuka($uangMukaTotal);
 
         $dao = new Dao\CustomerStayDao();
         $dao->creatNew($entity);
@@ -22,16 +22,36 @@ class CustomerStayService {
         $this->changeReservationStatus($id);
     }
 
-    private function getUangMuka($id) {
+    public function getUangMuka($id) {
         $dao = new Dao\ReservationDao();
         $result = $dao->getSelectedReservationWithRoom($id);
 
         return $result;
     }
 
+    public function getLama($id) {
+        $dao = new Dao\ReservationDao();
+        $result = $dao->getSelectedReservationWithLama($id);
+
+        return $result;
+    }
+
+    private function getTotalUangMuka($id) {
+        $uangMuka = $this->getUangMuka($id);
+        $lamaInap = $this->getLama($id);
+        echo $uangMuka;
+        echo $lamaInap;
+        return $lamaInap * $uangMuka;
+    }
+
     private function changeReservationStatus($id) {
         $dao = new Dao\ReservationDao();
         $dao->changeReservationStatus($id);
+    }
+
+    public function updateCheckout($id) {
+        $dao = new Dao\CustomerStayDao();
+        $dao->updateWaktuCheckout($id);
     }
 }
 ?>

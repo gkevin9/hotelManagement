@@ -24,5 +24,18 @@ class CustomerStayDao {
 
         $sql->close();
     }
+
+    public function updateWaktuCheckout($id) {
+        $conn = Db\DbUtil::getConnection();
+
+        $sql = $conn->prepare("update customerStay set waktuCheckOut = CURRENT_TIMESTAMP where id = ?");
+        $sql->bind_param("i", $id);
+        
+        if (!$sql->execute()) {
+            die(htmlspecialchars($sql->error));
+        }
+
+        $sql->close();
+    }
 }
 ?>

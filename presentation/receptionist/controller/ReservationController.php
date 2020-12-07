@@ -13,6 +13,13 @@ class ReserevationController {
         $listReservation = $service->getAllReservation();
         return $listReservation;
     }
+
+    public function getAllWithCustStay() {
+        $service = new Service\ReservationService();
+        $listReservation = $service->getAllReservationWithCustStay();
+        
+        return $listReservation;
+    }
 }
 
 ?>

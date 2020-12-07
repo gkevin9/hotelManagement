@@ -107,3 +107,25 @@ create table customerStay (
 );
 
 alter table customerStay change waktuCheckIn waktuCheckIn timestamp NOT NULL default CURRENT_TIMESTAMP;
+
+create table bill (
+	docNo int not null auto_increment,
+	amount int,
+	custStay int,
+	deskripsi varchar(30),
+	quantity int,
+	primary key(docNo),
+	foreign key (custStay) references customerStay(id)
+);
+
+create table payment (
+	docNo int not null auto_increment,
+	jumlah int,
+	kasir varchar(50),
+	metode varchar(10),
+	tanggal date,
+	bill int,
+	primary key(docNo),
+	foreign key(kasir) references staff(email),
+	foreign key(bill) references bill(docNo)
+);

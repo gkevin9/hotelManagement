@@ -26,7 +26,7 @@
 		    	</ul>
 			</div>
 			<div class="d-flex flex-row-reverse bd-highlight">
-				<button class="btn btn-danger">Log Out</button>
+				<a class="btn btn-danger" href="#">Log Out</a>
 			</div>
 		</nav>
 		<div class="container-fluid">

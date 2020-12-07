@@ -11,8 +11,8 @@
 		  	</button>
 		  	<div class="collapse navbar-collapse" id="navbarNav">
 		    	<ul class="navbar-nav">
-		      		<li class="nav-item active">
-		        		<a class="nav-link" href="#">Reservation <span class="sr-only">(current)</span></a>
+		      		<li class="nav-item">
+		        		<a class="nav-link" href="ListReservation.php">Reservation</a>
 		      		</li>
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="ListCustomer.php">Customer</a>
@@ -20,8 +20,8 @@
 		      		<li class="nav-item">
 		        		<a class="nav-link" href="#">Task</a>
 		      		</li>
-		      		<li class="nav-item">
-		        		<a class="nav-link" href="ListCheckOut.php">Check Out</a>
+		      		<li class="nav-item  active">
+		        		<a class="nav-link" href="#">Check Out</a>
 					</li>
 				</ul>	
 			</div>
@@ -31,8 +31,6 @@
 		</nav>
 		<div class="container-fluid">
 			<br>
-				<a href="ChooseRoom.php" class="btn btn-primary">+ New Reservation</a>
-			<br><br>
 			<table class="table table-hover">
 				<thead class="thead-dark">
 					<tr>
@@ -54,25 +52,24 @@
 
 				use presentation\receptionist\controller as Ctrl;
 				$controller = new Ctrl\ReserevationController();
-				$list = $controller->getAll();
+				$list = $controller->getAllWithCustStay();
 				
 				foreach ($list as $reservation) {
-					echo "<tr>";
-					echo "<td>".$reservation->getId()."</td>";
-					echo "<td>".$reservation->getNama()."</td>";
-					echo "<td>".$reservation->getNamaPemesan()."</td>";
-					echo "<td>".$reservation->getBykOrang()."</td>";
-					echo "<td>".$reservation->getTanggalCheckin()."</td>";
-					echo "<td>".$reservation->getLama()."</td>";
-					echo "<td>".$reservation->getKamar()."</td>";
-					echo "<td>".$reservation->getNomorTelepon()."</td>";
-					echo "<td>".$reservation->getStatus()."</td>";
-					if($reservation->getStatus() == "ACTIVE") {
-						echo "<td><a href='../controller/CustomerCheckinController.php?id=".$reservation->getId()."'><button class='btn btn-warning'>Checkin</button></a></td>";
-					}else {
-						echo "<td><button class='btn btn-warning' disabled>Checkin</button></td>";
-					}
-					echo "</tr>";
+                    if($reservation['waktuCheckOut'] == '0000-00-00 00:00:00' && $reservation['status'] == 'DONE') {
+                        echo "<tr>";
+                        echo "<td>".$reservation['id']."</td>";
+                        echo "<td>".$reservation['custId']."</td>";
+                        echo "<td>".$reservation['custName']."</td>";
+                        echo "<td>".$reservation['orang']."</td>";
+                        echo "<td>".$reservation['checkin']."</td>";
+                        echo "<td>".$reservation['lama']."</td>";
+                        echo "<td>".$reservation['room']."</td>";
+                        echo "<td>".$reservation['hp']."</td>";
+                        echo "<td>".$reservation['status']."</td>";
+                        
+                        echo "<td><a class='btn btn-danger' href='Payment.php?id=".$reservation['id']."'>Checkout</a></td>";
+                        echo "</tr>";
+                    }
 				}
 				?>
 				</tbody>
