@@ -49,17 +49,8 @@ class ReservationDao {
         $nomorTelepon = $newReservation->getNomorTelepon();
         $status = 'ACTIVE';
         $tglCheckin = $newReservation->getTanggalCheckIn();
-
-        $sql = $conn->prepare("insert into reservation(
-            bykOrang, 
-            kamar, 
-            lama, 
-            nama, 
-            namaPemesan, 
-            nomorTelepon, 
-            status, 
-            tanggalcheckin) 
-            values(?, ?, ?, ?, ?, ?, ?, ?)");
+        
+        $sql = $conn->prepare("insert into reservation(bykOrang, kamar, lama, nama, namaPemesan, nomorTelepon, status, tanggalcheckin) values(?, ?, ?, ?, ?, ?, ?, ?)");
         $sql->bind_param("iiisssss", $bykOrang, $kamar, $lama, $nama, $namaPemesan, $nomorTelepon, $status, $tglCheckin);
         
         if (!$sql->execute()) {

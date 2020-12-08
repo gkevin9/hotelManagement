@@ -8,7 +8,7 @@ create table staff (
 	primary key (email));
 
 create table customer (
-	nama varchar(20),
+	nama varchar(50),
 	nomorIdentitas varchar(15),
 	nomorKendaraan varchar(10),
 	nomorTelepon varchar(10),
