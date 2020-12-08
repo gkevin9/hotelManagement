@@ -32,7 +32,7 @@ if($_SESSION["role"] != "Receptionist"){
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-3">
-                        <input type="text" name="nama" required id="nama" autofocus class="form-control">
+                        <input type="text" name="nama" required id="nama" autofocus class="form-control" maxlength="50">
                     </div>
                     or
                     <div class="col-sm-4">
@@ -52,13 +52,13 @@ if($_SESSION["role"] != "Receptionist"){
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Vehicle Number</label>
                     <div class="col-sm-3">
-                        <input type="text" name="nomorKendaraan" required value="-" id="nomorKendaraan" class='form-control'>
+                        <input type="text" name="nomorKendaraan" required value="-" id="nomorKendaraan" class='form-control' maxlength="10">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Phone Number</label>
                     <div class="col-sm-3">
-                        <input type="text" name="nomorTelepon" required id="nomorTelepon" class="form-control">
+                        <input type="text" name="nomorTelepon" required id="nomorTelepon" class="form-control" maxlength="10">
                     </div>
                 </div>
                 <div class="form-group row">

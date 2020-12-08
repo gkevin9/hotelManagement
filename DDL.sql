@@ -8,7 +8,7 @@ create table staff (
 	primary key (email));
 
 create table customer (
-	nama varchar(20),
+	nama varchar(50),
 	nomorIdentitas varchar(15),
 	nomorKendaraan varchar(10),
 	nomorTelepon varchar(10),
@@ -67,7 +67,7 @@ create table reservation (
 	kamar int(11),
 	lama int(2),
 	nama varchar(15),
-	namaPemesan varchar(20),
+	namaPemesan varchar(50),
 	nomorTelepon varchar(10),
 	status varchar(10),
 	tanggalCheckin date,

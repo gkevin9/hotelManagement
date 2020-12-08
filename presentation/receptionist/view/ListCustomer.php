@@ -62,10 +62,10 @@ if($_SESSION["role"] != "Receptionist"){
 
 					foreach ($list as $cust) {
 						echo "<tr>";
-						echo "<td>".$cust->getNama()."</td>";
-						echo "<td>".$cust->getNomorIdentitas()."</td>";
-						echo "<td>".$cust->getNomorKendaraan()."</td>";
-						echo "<td>".$cust->getNomorTelepon()."</td>";
+						echo "<td class='align-middle'>".$cust->getNama()."</td>";
+						echo "<td class='align-middle'>".$cust->getNomorIdentitas()."</td>";
+						echo "<td class='align-middle'>".$cust->getNomorKendaraan()."</td>";
+						echo "<td class='align-middle'>".$cust->getNomorTelepon()."</td>";
 						echo "<td><a href='EditCustomer.php?id=".$cust->getNomorIdentitas()."'><button class='btn btn-warning'>Edit</button></a></td>";
 						echo "</tr>";
 					}

@@ -25,7 +25,7 @@ use domain\humanresource\service as Service;
         if ($role == "Receptionist") {
             $_SESSION["role"] = "Receptionist";
             // header('Location: receptionist/view/ListCustomer.php');
-            print "presentation/receptionist/view/ListCustomer.php";
+            print "presentation/receptionist/view/ListReservation.php";
         }else if ($role == "Chef") {
             $_SESSION["role"] = "Chef";
             // header('Location: kitchen/view/ListBahan.php');
