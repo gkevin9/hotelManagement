@@ -30,12 +30,12 @@ if($day_str == "Mon") {
     $day=7;
 }
 
-$ctrl = new StaffSearchController();
+$ctrl = new StaffAvailableByScheduleController();
 $data = $ctrl->getAllSchedule($role,$location,$day,$jam);
 
 print json_encode($data);
 
-class StaffSearchController {
+class StaffAvailableByScheduleController {
     
     public function getAllSchedule($role,$location,$day,$jam){
         $service = new Service\ScheduleService();

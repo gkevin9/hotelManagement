@@ -13,8 +13,8 @@ use domain\humanresource\model as Model;
 class OperationController {
     public function getAll() {
         $service = new Service\StaffService();
-        $listCustomer = $service->getAllStaff();
-        return $listCustomer;
+        $listStaff = $service->getAllStaff();
+        return $listStaff;
     }
 
     public function updateStaff(Model\NewStaffModel $updateStaff) {

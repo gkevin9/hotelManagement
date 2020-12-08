@@ -14,7 +14,7 @@ $( document ).ready(function() {
         // DO POST
         $.ajax({
           type : "POST",
-          url : "../controller/StaffSearchController.php",
+          url : "../controller/StaffAvailableByScheduleController.php",
           data : formData,
           success : function(param) {
             var count = param.length;
