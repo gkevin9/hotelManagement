@@ -64,15 +64,15 @@ if($_SESSION["role"] != "Receptionist"){
 				foreach ($list as $reservation) {
                     if($reservation['waktuCheckOut'] == '0000-00-00 00:00:00' && $reservation['status'] == 'DONE') {
                         echo "<tr>";
-                        echo "<td>".$reservation['id']."</td>";
-                        echo "<td>".$reservation['custId']."</td>";
-                        echo "<td>".$reservation['custName']."</td>";
-                        echo "<td>".$reservation['orang']."</td>";
-                        echo "<td>".$reservation['checkin']."</td>";
-                        echo "<td>".$reservation['lama']."</td>";
-                        echo "<td>".$reservation['room']."</td>";
-                        echo "<td>".$reservation['hp']."</td>";
-                        echo "<td>".$reservation['status']."</td>";
+                        echo "<td class='align-middle'>".$reservation['id']."</td>";
+                        echo "<td class='align-middle'>".$reservation['custId']."</td>";
+                        echo "<td class='align-middle'>".$reservation['custName']."</td>";
+                        echo "<td class='align-middle'>".$reservation['orang']."</td>";
+                        echo "<td class='align-middle'>".$reservation['checkin']."</td>";
+                        echo "<td class='align-middle'>".$reservation['lama']."</td>";
+                        echo "<td class='align-middle'>".$reservation['room']."</td>";
+                        echo "<td class='align-middle'>".$reservation['hp']."</td>";
+                        echo "<td class='align-middle'>".$reservation['status']."</td>";
                         
                         echo "<td><a class='btn btn-danger' href='Payment.php?id=".$reservation['id']."'>Checkout</a></td>";
                         echo "</tr>";

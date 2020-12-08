@@ -64,22 +64,24 @@ if($_SESSION["role"] != "Receptionist"){
 				$list = $controller->getAll();
 				
 				foreach ($list as $reservation) {
-					echo "<tr>";
-					echo "<td>".$reservation->getId()."</td>";
-					echo "<td>".$reservation->getNama()."</td>";
-					echo "<td>".$reservation->getNamaPemesan()."</td>";
-					echo "<td>".$reservation->getBykOrang()."</td>";
-					echo "<td>".$reservation->getTanggalCheckin()."</td>";
-					echo "<td>".$reservation->getLama()."</td>";
-					echo "<td>".$reservation->getKamar()."</td>";
-					echo "<td>".$reservation->getNomorTelepon()."</td>";
-					echo "<td>".$reservation->getStatus()."</td>";
-					if($reservation->getStatus() == "ACTIVE") {
-						echo "<td><a href='../controller/CustomerCheckinController.php?id=".$reservation->getId()."'><button class='btn btn-warning'>Checkin</button></a></td>";
-					}else {
-						echo "<td><button class='btn btn-warning' disabled>Checkin</button></td>";
+					if($reservation->getStatus() != "DONE") {
+						echo "<tr>";
+						echo "<td class='align-middle'>".$reservation->getId()."</td>";
+						echo "<td class='align-middle'>".$reservation->getNama()."</td>";
+						echo "<td class='align-middle'>".$reservation->getNamaPemesan()."</td>";
+						echo "<td class='align-middle'>".$reservation->getBykOrang()."</td>";
+						echo "<td class='align-middle'>".$reservation->getTanggalCheckin()."</td>";
+						echo "<td class='align-middle'>".$reservation->getLama()."</td>";
+						echo "<td class='align-middle'>".$reservation->getKamar()."</td>";
+						echo "<td class='align-middle'>".$reservation->getNomorTelepon()."</td>";
+						echo "<td class='align-middle'>".$reservation->getStatus()."</td>";
+						if($reservation->getStatus() == "ACTIVE") {
+							echo "<td><a href='../controller/CustomerCheckinController.php?id=".$reservation->getId()."'><button class='btn btn-warning'>Checkin</button></a></td>";
+						}else {
+							echo "<td><button class='btn btn-warning' disabled>Checkin</button></td>";
+						}
+						echo "</tr>";
 					}
-					echo "</tr>";
 				}
 				?>
 				</tbody>

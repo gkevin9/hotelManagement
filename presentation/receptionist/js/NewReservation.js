@@ -60,27 +60,14 @@ $(document).ready(function() {
                 }
             })
         }else{
-            var inputData = $('#newcustomer').serialize();
-            
-            $.ajax({
-                type: 'POST',
-                url: '../controller/NewReservationController.php',
-                data: inputData,
-                success: function(param) {
-                    console.log('beres');
-                    window.location.replace('ListReservation.php');
-                },
-                error: function(e) {
-                    alert("ERROR: ", e);
-                }
-            })
+            saveNewReservation()
         }
     })
 
     function saveNewReservation() {
         
-        var inputData = $('newcustomer').serialize();
-
+        var inputData = $('#newcustomer').serialize();
+        
         $.ajax({
             type: 'POST',
             url: '../controller/NewReservationController.php',
