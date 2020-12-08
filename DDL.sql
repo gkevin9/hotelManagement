@@ -67,7 +67,7 @@ create table reservation (
 	kamar int(11),
 	lama int(2),
 	nama varchar(15),
-	namaPemesan varchar(20),
+	namaPemesan varchar(50),
 	nomorTelepon varchar(10),
 	status varchar(10),
 	tanggalCheckin date,
