@@ -81,7 +81,7 @@ create table schedule (
 	hari int,
 	jam_awal TIME,
 	jam_akhir TIME,
-	lokasi varchar(10),
+	lokasi varchar(30),
 	staff varchar(50),
 	primary key(id),
 	foreign key(staff) references staff(email)

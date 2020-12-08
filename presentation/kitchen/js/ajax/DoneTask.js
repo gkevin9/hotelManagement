@@ -5,7 +5,7 @@ $(document).ready(function(){
          
          $.ajax({
                 type : "POST",
-                url : "../../../operationsupervisor/controller/UpdateTaskController.php",
+                url : "../controller/UpdateTaskController.php",
                 data : {TaskID:taskID},
                 cache: false,
                 success:function(data){

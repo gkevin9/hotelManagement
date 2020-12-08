@@ -25,7 +25,7 @@ if(isset($_POST["submit"])){
     $ctrl = new NewTaskController();
     $ctrl->newTask($newtask);
 
-    header("Location: ../view/ListSchedule.php");
+    header("Location: ../view/ListTask.php");
     exit();
 }
 

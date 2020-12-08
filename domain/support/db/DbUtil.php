@@ -4,7 +4,7 @@ class DbUtil {
     private static $conn;
 
     private static function openNewConnection() {
-        $c = mysqli_connect("localhost", "admin", "admin", "hotel");
+        $c = mysqli_connect("localhost", "admin", "admin", "hotel2");
         // Check connection
         if (!$c) {
             die("Connection failed: " . mysqli_connect_error());

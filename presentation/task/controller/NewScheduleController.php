@@ -24,7 +24,7 @@ use domain\task\model as Model;
         $service = new Service\ScheduleService();
         $service->createNew($newSchedule);
 
-        print "berhasil";
+        print "../view/ListSchedule.php";
     }else {
         print "failed";
     }

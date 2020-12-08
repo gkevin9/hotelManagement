@@ -61,7 +61,6 @@ if($_SESSION["role"] != "OperationSupervisor"){
 
 					use presentation\operationsupervisor\controller as Ctrl;
                     $controller = new Ctrl\TaskController();
-                    session_start();
                     $email = $_SESSION["email"];
 					$list = $controller->getAll($email);
 					$pos = 1;

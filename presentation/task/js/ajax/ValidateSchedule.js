@@ -23,7 +23,7 @@ $( document ).ready(function() {
               $("#cek_schedule").html('<div class="alert alert-danger" role="alert">Jadwal sudah ada</div>'); 
             }else {
                 console.log(param);
-                // window.location.replace(param);
+                window.location.replace(param);
             }
           },
           error : function(e) {
