@@ -60,6 +60,19 @@ create table kamar (
 insert into kamar values(1000000, '1', 101, 2, 0);
 insert into kamar values(1500000, '2', 102, 4, 0);
 insert into kamar values(1500000, '3', 103, 2, 0);
+insert into kamar values(2000000, '4', 104, 8, 0);
+insert into kamar values(1000000, '1', 201, 2, 0);
+insert into kamar values(1000000, '1', 202, 2, 0);
+insert into kamar values(1000000, '1', 203, 2, 0);
+insert into kamar values(1000000, '1', 204, 2, 0);
+insert into kamar values(1500000, '2', 205, 4, 0);
+insert into kamar values(1500000, '2', 206, 4, 0);
+insert into kamar values(1300000, '2', 207, 2, 0);
+insert into kamar values(1500000, '3', 208, 2, 0);
+insert into kamar values(1700000, '3', 209, 5, 0);
+insert into kamar values(1000000, '3', 210, 1, 0);
+insert into kamar values(1500000, '4', 211, 1, 0);
+insert into kamar values(2500000, '4', 212, 10, 0);
 
 create table reservation (
 	id int not null auto_increment,
