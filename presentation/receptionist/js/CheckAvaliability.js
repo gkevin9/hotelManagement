@@ -24,13 +24,13 @@ $(document).ready(function() {
             $("#checkin").removeClass("is-invalid");
             var temp = '';
             $.each(param, function(key, value) {
-              temp += '<div class="card card-hover"><div class="card-body"><table>'
+              temp += '<div class="col"><div class="card"><div class="card-body"><table>'
               + '<tr><td>Room Number :</td><td>'+key+'</td></tr>'
               + '<tr><td>Price</td><td>'+value['harga']+'</td></tr>'
               + '<tr><td>Capacity</td><td>'+value['jmlh_org']+'</td></tr>'
               + '</table></div>'
               + '<button class="btn btn-warning" onclick="test('+key+')"'
-              + '>Select</button></div>';
+              + '>Select</button></div></div></div>';
             })
             
             $('#listroom').html(temp);

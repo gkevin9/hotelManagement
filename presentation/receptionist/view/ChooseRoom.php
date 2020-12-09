@@ -63,7 +63,7 @@ if($_SESSION["role"] != "Receptionist"){
                     <div id="alert" class="alert alert-danger" role="alert" style="display: none;">
                         No room avaliable
                     </div>
-                    <div class="card-deck" id="listroom">
+                    <div class="row row-cols-1 row-cols-md-3 g-4" id="listroom">
                         <!--card in javascrip ajax-->
                     </div>
                 </div>
