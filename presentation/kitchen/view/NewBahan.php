@@ -39,7 +39,7 @@ if($_SESSION["role"] != "Chef"){
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Quantity</label>
 				<div class="col-sm-3">
-					<input type="number" name="jumlah" required value="-" id="jumlah" class='form-control'>
+					<input type="text" name="jumlah" required id="jumlah" class='form-control'>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -62,5 +62,23 @@ if($_SESSION["role"] != "Chef"){
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+        var jumlah = document.getElementById("jumlah");
+        jumlah.defaultValue = '1';
+
+        jumlah.addEventListener('keyup', function(evt){
+            var n = parseInt(this.value.replace(/\D/g,''),10);
+            jumlah.value = n.toLocaleString();
+		}, false);
+		
+		var harga = document.getElementById("harga");
+        harga.defaultValue = '0';
+
+        harga.addEventListener('keyup', function(evt){
+            var n = parseInt(this.value.replace(/\D/g,''),10);
+            harga.value = n.toLocaleString();
+        }, false);
+
+    </script>
 </body>
 </html>

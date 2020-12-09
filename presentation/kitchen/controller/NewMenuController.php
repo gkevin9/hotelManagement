@@ -20,7 +20,7 @@ if ($isValid){
 	$newMenu->setId($_POST['id']);
 	$newMenu->setNama($_POST['name']);
 	$newMenu->setJenis($_POST['jenis']);
-	$newMenu->setHarga($_POST['harga']);
+	$newMenu->setHarga(floatval(str_replace(",", "", $_POST['harga'])));
 
     $service = new Service\MenuService();
     $service->createNew($newMenu , $bahan);

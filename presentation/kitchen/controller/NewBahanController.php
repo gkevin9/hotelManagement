@@ -17,8 +17,8 @@ if ($isValid){
     $newBahan = new Model\NewBahanModel();
     $newBahan->setId($_POST['id']);
     $newBahan->setNama($_POST['name']);
-    $newBahan->setJumlah($_POST['jumlah']);
-    $newBahan->setHarga($_POST['harga']);
+    $newBahan->setJumlah(floatval(str_replace(",", "", $_POST['jumlah'])));
+    $newBahan->setHarga(floatval(str_replace(",", "", $_POST['harga'])));
     $newBahan->setExpDate($_POST['exp_date']);
 
     $service = new Service\BahanService();

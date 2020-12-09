@@ -47,7 +47,7 @@ if($_SESSION["role"] != "Chef"){
 			<div class="form-group row">
 				<label class="col-sm-2 col-form-label">Price</label>
 				<div class="col-sm-3">
-					<input type="number" name="harga" required id="harga" class="form-control">
+					<input type="text" name="harga" required id="harga" class="form-control">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -76,5 +76,15 @@ if($_SESSION["role"] != "Chef"){
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript">
+		var harga = document.getElementById("harga");
+        harga.defaultValue = '0';
+
+        harga.addEventListener('keyup', function(evt){
+            var n = parseInt(this.value.replace(/\D/g,''),10);
+            harga.value = n.toLocaleString();
+        }, false);
+
+    </script>
 </body>
 </html>
