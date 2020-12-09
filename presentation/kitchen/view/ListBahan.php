@@ -42,8 +42,8 @@ if($_SESSION["role"] != "Chef"){
 					<tr>
 						<th scope="col">Id</th>
 						<th scope="col">Name</th>
-						<th scope="col">Harga</th>
-						<th scope="col">Jumlah</th>
+						<th scope="col" style='text-align: right;'>Harga (Rp)</th>
+						<th scope="col" style='text-align: right;'>Jumlah</th>
 						<th scope="col">Expired Date</th>
 					</tr>
 				</thead>
@@ -61,8 +61,8 @@ if($_SESSION["role"] != "Chef"){
 						echo "<tr>";
 						echo "<td>".$bahan->getId()."</td>";
 						echo "<td>".$bahan->getNama()."</td>";
-						echo "<td>".$bahan->getJumlah()."</td>";
-						echo "<td>".$bahan->getHarga()."</td>";
+						echo "<td style='text-align: right;'>".number_format($bahan->getHarga())."</td>";
+						echo "<td style='text-align: right;'>".number_format($bahan->getJumlah())."</td>";
 						echo "<td>".$bahan->getExpDate()."</td>";
 						echo "</tr>";
 					}

@@ -43,7 +43,7 @@ if($_SESSION["role"] != "Chef"){
 						<th scope="col">Id</th>
 						<th scope="col">Name</th>
 						<th scope="col">Jenis</th>
-						<th scope="col">Harga</th>
+						<th scope="col" style='text-align: right;'>Harga (Rp)</th>
 						<th scope="col">Bahan</th>
 					</tr>
 				</thead>
@@ -62,7 +62,7 @@ if($_SESSION["role"] != "Chef"){
 						echo "<td>".$menu->getId()."</td>";
 						echo "<td>".$menu->getNama()."</td>";
 						echo "<td>".$menu->getJenis()."</td>";
-						echo "<td>".$menu->getHarga()."</td>";
+						echo "<td style='text-align: right;'>".number_format($menu->getHarga())."</td>";
 						$str = "<td>";
 						foreach($menu->getBahan() as $bahan){
 							$str.=$bahan." , ";
