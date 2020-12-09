@@ -7,7 +7,7 @@ if($_SESSION["role"] != "Chef"){
 ?>
 <html>
 	<head>
-		<title>Staff</title>
+		<title>Task</title>
         <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../js/ajax/DoneTask.js"></script>

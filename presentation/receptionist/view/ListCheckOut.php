@@ -7,7 +7,7 @@ if($_SESSION["role"] != "Receptionist"){
 ?>
 <html>
 	<head>
-		<title>Reservation</title>
+		<title>Check Out</title>
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>

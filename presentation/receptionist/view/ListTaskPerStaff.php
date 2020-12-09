@@ -7,7 +7,7 @@ if($_SESSION["role"] != "Receptionist"){
 ?>
 <html>
 	<head>
-		<title>Staff</title>
+		<title>Task</title>
         <link href="../../public/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="../js/DoneTask.js"></script>
@@ -41,7 +41,6 @@ if($_SESSION["role"] != "Receptionist"){
 		<div class="container-fluid">
             <br>
             <h3>Tugas staff yang belum dikerjakan</h3>
-            <br>
             <br>
             <table class="table table-hover">
 				<thead class="thead-dark">
