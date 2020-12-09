@@ -67,10 +67,13 @@ class CustomerDao {
         
         $tempCustomer = $res->fetch_assoc();
         $customer = new Entity\Customer();
-        $customer->setNama($tempCustomer['nama']);
-        $customer->setNomorIdentitas($tempCustomer['nomorIdentitas']);
-        $customer->setNomorKendaraan($tempCustomer['nomorKendaraan']);
-        $customer->setNomorTelepon($tempCustomer['nomorTelepon']);
+
+        if(!is_null($tempCustomer)) {
+            $customer->setNama($tempCustomer['nama']);
+            $customer->setNomorIdentitas($tempCustomer['nomorIdentitas']);
+            $customer->setNomorKendaraan($tempCustomer['nomorKendaraan']);
+            $customer->setNomorTelepon($tempCustomer['nomorTelepon']);
+        }
 
         return $customer;
     }
