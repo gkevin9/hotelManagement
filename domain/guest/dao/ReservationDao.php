@@ -90,6 +90,12 @@ class ReservationDao {
         mysqli_query($conn, $sql) or die(mysqli_error($conn));
     }
 
+    public function changeReservationStatusToCancle($id) {
+        $conn = Db\DbUtil::getConnection();
+        $sql = "update reservation set status='CANCLE' where id=$id";
+        mysqli_query($conn, $sql) or die(mysqli_error($conn));
+    }
+
     public function getAllWithCustomerStay() {
         
         $conn = Db\DbUtil::getConnection();

@@ -41,5 +41,10 @@ class ReservationService {
     $dao = new Dao\ReservationDao();
     $dao->createNew($reservation);
   }
+
+  public function cancleReservation($id) {
+    $dao = new Dao\ReservationDao();
+    $dao->changeReservationStatusToCancle($id);
+  }
 }
 ?>

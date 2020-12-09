@@ -9,6 +9,8 @@ if($_SESSION["role"] != "Receptionist"){
 	<head>
 		<title>Reservation</title>
 		<link href="../../public/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="../../public/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -76,7 +78,8 @@ if($_SESSION["role"] != "Receptionist"){
 						echo "<td class='align-middle'>".$reservation->getNomorTelepon()."</td>";
 						echo "<td class='align-middle'>".$reservation->getStatus()."</td>";
 						if($reservation->getStatus() == "ACTIVE") {
-							echo "<td><a href='../controller/CustomerCheckinController.php?id=".$reservation->getId()."'><button class='btn btn-warning'>Checkin</button></a></td>";
+							echo "<td><a href='../controller/CustomerCheckinController.php?id=".$reservation->getId()."'><button class='btn btn-warning'>Checkin</button></a>&nbsp";
+							echo "<button type='button' class='btn btn-danger' onclick='openModal(".$reservation->getId().")'>X</button></td>";
 						}else {
 							echo "<td><button class='btn btn-warning' disabled>Checkin</button></td>";
 						}
@@ -86,6 +89,34 @@ if($_SESSION["role"] != "Receptionist"){
 				?>
 				</tbody>
 			</table>
-		</div>	
+		</div>
+		<div class="modal fade" id="cancleModal" tabindex="-1" aria-labelledby="cancleModal" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="alert alert-danger" role="alert">
+							Membatalkan reservasi tidak dapat dikembalikan! Anda yakin?
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="hidden" value="0" id="idReservation">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+						<button type="button" class="btn btn-danger" onclick="cancleReservation()">Ya</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
+	<script>
+		function cancleReservation() {
+			var id = $('#idReservation').val();
+			window.location.replace('../controller/ReservationCancleController.php?id=' + id);
+		}
+
+		function openModal(id) {
+			var modal = new bootstrap.Modal(document.getElementById('cancleModal'), {keyboard: false});
+			modal.toggle();
+			$('#idReservation').val(id);
+		}
+	</script>
 </html>

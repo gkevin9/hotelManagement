@@ -48,18 +48,19 @@ class RoomAvaliabilityService {
         // $list = array();
         // $dateCheckInReservation = date_create($dateCheckIn);
         foreach($listReservation as $reservation) {
-            $checkin = date_create($reservation->getTanggalCheckin());
-            $lama = date_interval_create_from_date_string($reservation->getLama() . " days");
-            $checkout = date_format(date_add($checkin, $lama), "Y-m-d");
+            if($reservation->getStatus() != 'CANCLE'){
+                $checkin = date_create($reservation->getTanggalCheckin());
+                $lama = date_interval_create_from_date_string($reservation->getLama() . " days");
+                $checkout = date_format(date_add($checkin, $lama), "Y-m-d");
 
-            
-            if ($dateCheckout <= $checkout && $dateCheckout >= $reservation->getTanggalCheckin()) {
-                unset($roomAssocArray[$reservation->getKamar()]);
+                
+                if ($dateCheckout <= $checkout && $dateCheckout >= $reservation->getTanggalCheckin()) {
+                    unset($roomAssocArray[$reservation->getKamar()]);
+                }
+                if ($dateCheckin <= $checkout && $dateCheckin >= $reservation->getTanggalCheckin()) {
+                    unset($roomAssocArray[$reservation->getKamar()]);
+                }
             }
-            if ($dateCheckin <= $checkout && $dateCheckin >= $reservation->getTanggalCheckin()) {
-                unset($roomAssocArray[$reservation->getKamar()]);
-            }
-            
             // array_push($list, $checkout);
         }
         return $roomAssocArray;
