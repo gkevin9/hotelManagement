@@ -8,9 +8,9 @@ require_once($_SERVER['DOCUMENT_ROOT']."/domain/guest/service/CustomerStayServic
 use domain\guest\model as Model;
 use domain\guest\service as Service;
 
-$cash = $_POST['cash'];
-$debit = $_POST['debit'];
-$credit = $_POST['credit'];
+$cash = floatval(str_replace(",", "", $_POST['cash']));
+$debit = floatval(str_replace(",", "", $_POST['debit']));
+$credit = floatval(str_replace(",", "", $_POST['credit']));
 $total = $_POST['total'];
 $billId = $_POST['billId'];
 
