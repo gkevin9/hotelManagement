@@ -45,7 +45,7 @@ create table kategoriKamar (
 	primary key (id)
 );
 
-insert into kategoriKamar values('1','standard'), ('2','deluxe'), ('3','suite'), ('4','president');
+insert into kategoriKamar values('1','standard'), ('2','deluxe'), ('3','executive'), ('4','president');
 
 create table kamar (
 	harga int(11),
